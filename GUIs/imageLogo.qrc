@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="logoShare">
+    <file>logoShare.png</file>
+  </qresource>
+</RCC>
