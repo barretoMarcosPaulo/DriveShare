@@ -12,6 +12,6 @@ Tool implemented in python3 for file uploads. The tool has user registration, au
 
 4 - Registration Screen
 
-<img src="screenshots/Registre.png" width="500px">
-<img src="screenshots/Success.png" width="500px">
+<img src="screenshots/Registre.png" width="700px">
+<img src="screenshots/Success.png" width="700px">
 
