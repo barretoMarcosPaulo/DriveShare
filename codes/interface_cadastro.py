@@ -1,14 +1,9 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'DriveShare-cadastro.ui'
-#
-# Created by: PyQt4 UI code generator 4.12.1
-#
-# WARNING! All changes made in this file will be lost!
-
 from PyQt4 import QtCore, QtGui
 from PyQt4.QtGui import *
 from cadastro import User , Register
+
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
 except AttributeError:
@@ -22,6 +17,8 @@ try:
 except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
+
+MYSQL = Register()
 
 class Ui_Dialog_Cadastro(object):
     def setupUi(self, Dialog):
@@ -105,19 +102,22 @@ class Ui_Dialog_Cadastro(object):
         if name!="" and lastname!="" and email!="" and password!="" and repeat_pass!="":
             if password != repeat_pass:
                 QMessageBox.information(w, "Ooops!", "As Senhas Fornecidas Estao Erradas.")
+           
             elif not '@' in email and email != None :
                 QMessageBox.information(w, "Ooops!", "Digite um email valido.")
             else:
+                
+                # userRegistrer = User(self.nomeLineEdit.text() , self.nomeLineEdit_2.text() , self.nomeLineEdit_3.text() , self.nomeLineEdit_4.text())
+                MYSQL.register(str(name) , str(lastname) , str(email) , str(password))
                 QMessageBox.information(w, "Cadastro Realizado!", "Muito Bem, seu cadastro foi realizado.")
         else:    
             QMessageBox.information(w, "Ooops!", "Por Favor, Preencha Todos Os Campos.")
-        # userRegistrer = User(,,self.nomeLineEdit_4.text(),)
 
 
 
 
     def retranslateUi(self, Dialog):
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog", None))
+        Dialog.setWindowTitle(_translate("Dialog", "Criar Uma Nova Conta", None))
         self.label.setText(_translate("Dialog", "DriveShare", None))
         self.label_3.setText(_translate("Dialog", "Crie uma Nova Conta", None))
         self.nomeLabel.setText(_translate("Dialog", "Nome", None))

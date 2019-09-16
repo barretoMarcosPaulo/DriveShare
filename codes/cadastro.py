@@ -1,4 +1,6 @@
 
+import pymysql
+
 class User():
 	def __init__(self ,name , lastname,email,password):
 		self.name = name
@@ -37,12 +39,29 @@ class User():
 
 class Register():
 	def __init__(self):
-		self.clients = []
+		self.host = 'localhost'
+		self.database = 'drive'
+		self.user = 'driveshare'
+		self.passwd = 'drive@123'
 
-	def get_clientes(self):
-		for client in self.clients:
-			print(client)
 
-	def register(self , client):
-		self.clients.append(client)
+	def register(self , name , lastname , email , password):
+		
+		name = name
+		lastname = lastname
+		email = email
+		password = password
 
+		try:
+			connection = pymysql.connect(host=self.host,db=self.database, user=self.user, passwd=self.passwd)
+			cursor = connection.cursor()
+			querySaveUser = "INSERT INTO users(primaryName,lastName,email,passwd) VALUES(%s,%s,%s,%s)"
+			
+			try:
+				cursor.execute(querySaveUser,(name,lastname,email,password))
+				connection.commit()
+				print("OK.")
+			except:
+				print("Error!!!")
+		except:
+			print("Connection Error!!!")
