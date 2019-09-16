@@ -10,7 +10,7 @@ Tool implemented in python3 for file uploads. The tool has user registration, au
 
 3 - Install python3
 
-4 - Registration Screen
+# Registration Screen
 
 <img src="screenshots/Registre.png" width="700px">
 <img src="screenshots/Success.png" width="700px">
