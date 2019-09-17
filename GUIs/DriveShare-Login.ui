@@ -16,7 +16,7 @@
   <property name="styleSheet">
    <string notr="true"/>
   </property>
-  <widget class="QLineEdit" name="usuRioLineEdit">
+  <widget class="QLineEdit" name="emailLogin">
    <property name="geometry">
     <rect>
      <x>190</x>
@@ -52,7 +52,7 @@
     <string>Senha</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="senhaLineEdit">
+  <widget class="QLineEdit" name="passLogin">
    <property name="geometry">
     <rect>
      <x>190</x>
@@ -71,7 +71,7 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>50</x>
+     <x>60</x>
      <y>430</y>
      <width>251</width>
      <height>51</height>
@@ -112,7 +112,7 @@
     <string>Acesse sua conta</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="loginRegisterButton">
    <property name="geometry">
     <rect>
      <x>190</x>
@@ -141,7 +141,7 @@
     <string>Esqueci minha senha</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="loginButton">
    <property name="geometry">
     <rect>
      <x>360</x>
