@@ -72,17 +72,6 @@ class Ui_Dialog(object):
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
-        self.funcionalidades()
-
-    def funcionalidades(self):
-        self.pushButton_2.clicked.connect(self.cadastrar)
-
-    def cadastrar(self):
-
-        QtWidgets.QMessageBox.about(None, "Cadastro", "Cliente cadastrado com sucesso!",)
-
-
-
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
@@ -94,8 +83,7 @@ class Ui_Dialog(object):
         self.nomeLabel_4.setText(_translate("Dialog", "Senha"))
         self.nomeLabel_5.setText(_translate("Dialog", "Repetir Senha"))
         self.pushButton_2.setText(_translate("Dialog", "Cadastrar"))
-        # self.label_4.setText(_translate("Dialog", "<html><head/><body><p><img src=\":/logoShare.png\"/></p></body></html>"))
-        self.label_3.setText(_translate("Dialog", "<html><head/><body><p><img src=\":logoShare.png\"/></p></body></html>"))
+        self.label_4.setText(_translate("Dialog", "<html><head/><body><p><img src=\":/logoShare/logoShare.png\"/></p></body></html>"))
 # import imageLogo_rc
 
 
