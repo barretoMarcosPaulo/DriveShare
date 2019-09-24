@@ -5,12 +5,6 @@ import sys
 import time
 class Login_Ui_Dialog(object):
     
-    def openRegisterWindow(self):
-        self.window = QtWidgets.QMainWindow()
-        self.ui = Register_Ui_Dialog()
-        self.ui.setupUi(self.window)
-        self.window.show()
-
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(629, 494)
@@ -62,7 +56,7 @@ class Login_Ui_Dialog(object):
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
-        self.actions_buttons()
+
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
@@ -75,9 +69,6 @@ class Login_Ui_Dialog(object):
         self.label_4.setText(_translate("Dialog", "Esqueci minha senha"))
         self.loginButton.setText(_translate("Dialog", "Entrar"))
         self.label_3.setText(_translate("Dialog", "<html><head/><body><p><img src=\"logoShare.png\"/></p></body></html>"))
-
-    def actions_buttons(self):
-        self.loginRegisterButton.clicked.connect(self.openRegisterWindow)
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
