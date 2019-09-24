@@ -47,9 +47,8 @@ class Main(QMainWindow, Ui_Main):
         passwd = self.tela_cadastro.passRegister.text()
         email = self.tela_cadastro.emailRegister.text()
         name = self.tela_cadastro.nameRegister.text()
-
-        print(passwd, lastname, passwd, email, name)
-        '''if name!="" and lastname!="" and email!="" and passwd!="" and passwdRepeat!="":
+        
+        if name!="" and lastname!="" and email!="" and passwd!="" and passwdRepeat!="":
             if passwd != passwdRepeat:
                 QtWidgets.QMessageBox.about(None, "Ooops!", "Suas senhas Nao Conferem.")
 
@@ -57,8 +56,8 @@ class Main(QMainWindow, Ui_Main):
                 QtWidgets.QMessageBox.about(None, "Ooops!", "Seu E-mail e Invalido.")
             else:
                 QtWidgets.QMessageBox.about(None, "Muito Bem!", "Cadastro Realizado Com Sucesso.")
-
-  '''              
+                self.QtStack.setCurrentIndex(0)
+                
 
     	
 
