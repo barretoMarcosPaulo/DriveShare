@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from gui_register import Register_Ui_Dialog
 import sys
 import time
 class Login_Ui_Dialog(object):

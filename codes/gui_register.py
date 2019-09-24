@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from PyQt5 import QtCore, QtGui, QtWidgets
 from cadastro import Register
-# from gui_login import Login_Ui_Dialog
 
 
 class Register_Ui_Dialog(object):
