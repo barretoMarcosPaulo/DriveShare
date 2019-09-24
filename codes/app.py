@@ -56,6 +56,12 @@ class Main(QMainWindow, Ui_Main):
                 QtWidgets.QMessageBox.about(None, "Ooops!", "Seu E-mail e Invalido.")
             else:
                 QtWidgets.QMessageBox.about(None, "Muito Bem!", "Cadastro Realizado Com Sucesso.")
+                self.tela_cadastro.passRepeatRegister.setText("")
+                self.tela_cadastro.lastNameRegister.setText("")
+                self.tela_cadastro.passRegister.setText("")
+                self.tela_cadastro.emailRegister.setText("")
+                self.tela_cadastro.nameRegister.setText("")
+
                 self.QtStack.setCurrentIndex(0)
                 
 
