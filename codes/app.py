@@ -36,11 +36,30 @@ class Main(QMainWindow, Ui_Main):
         super(Main, self).__init__(parent)
         self.setupUi(self)
         self.tela_inicio.loginRegisterButton.clicked.connect(self.openLoginScreen)
+        self.tela_cadastro.buttonRegister.clicked.connect(self.registerGetDatas)
 
     def openLoginScreen(self):
         self.QtStack.setCurrentIndex(1)
 
     def registerGetDatas(self):
+        passwdRepeat = self.tela_cadastro.passRepeatRegister.text()
+        lastname = self.tela_cadastro.lastNameRegister.text()
+        passwd = self.tela_cadastro.passRegister.text()
+        email = self.tela_cadastro.emailRegister.text()
+        name = self.tela_cadastro.nameRegister.text()
+
+        print(passwd, lastname, passwd, email, name)
+        '''if name!="" and lastname!="" and email!="" and passwd!="" and passwdRepeat!="":
+            if passwd != passwdRepeat:
+                QtWidgets.QMessageBox.about(None, "Ooops!", "Suas senhas Nao Conferem.")
+
+            elif not '@' in email and email != None :
+                QtWidgets.QMessageBox.about(None, "Ooops!", "Seu E-mail e Invalido.")
+            else:
+                QtWidgets.QMessageBox.about(None, "Muito Bem!", "Cadastro Realizado Com Sucesso.")
+
+  '''              
+
     	
 
 if __name__ == '__main__':

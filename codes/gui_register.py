@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from PyQt5 import QtCore, QtGui, QtWidgets
-from cadastro import Register
+#from cadastro import Register
 
 
 class Register_Ui_Dialog(object):
@@ -64,7 +64,6 @@ class Register_Ui_Dialog(object):
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
-        self.action_button()
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
@@ -79,35 +78,6 @@ class Register_Ui_Dialog(object):
         self.buttonRegister.setText(_translate("Dialog", "Cadastrar"))
         self.label_4.setText(_translate("Dialog", "<html><head/><body><p><img src=\"logoShare.png\"/></p></body></html>"))
 
-    def action_button(self):
-        self.buttonRegister.clicked.connect(self.get_data_form)
-
-    def get_data_form(self):
-        passwdRepeat = self.passRepeatRegister.text()
-        lastname = self.lastNameRegister.text()
-        passwd = self.passRegister.text()
-        email = self.emailRegister.text()
-        name = self.nameRegister.text()
-
-        if name!="" and lastname!="" and email!="" and passwd!="" and passwdRepeat!="":
-            if passwd != passwdRepeat:
-                QtWidgets.QMessageBox.about(None, "Ooops!", "Suas senhas Nao Conferem.")
-
-            elif not '@' in email and email != None :
-                QtWidgets.QMessageBox.about(None, "Ooops!", "Seu E-mail e Invalido.")
-            else:
-                QtWidgets.QMessageBox.about(None, "Muito Bem!", "Cadastro Realizado Com Sucesso.")
-
-                
-                #DialogLogin = QtWidgets.QDialog()
-                self.login_screen = Login_Ui_Dialog()
-                self.login_screen
-                #login_screen.setupUi(DialogLogin)
-                #DialogLogin.show()
-                
-
-        else:
-            QtWidgets.QMessageBox.about(None, "Ooops!", "Preencha Todos Os Campos.")
 
 
 if __name__ == "__main__":
