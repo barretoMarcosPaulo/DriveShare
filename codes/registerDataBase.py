@@ -2,7 +2,7 @@
 import pymysql
 
 
-class Register():
+class RegisterToDataBase():
 	def __init__(self):
 		self.host = 'localhost'
 		self.database = 'drive'
@@ -11,7 +11,7 @@ class Register():
 		self.connection = pymysql.connect(host=self.host,db=self.database, user=self.user, passwd=self.passwd)
 
 
-	def register(self , name , lastname , email , password):
+	def save_datas(self , name , lastname , email , password):
 		
 		name = name
 		lastname = lastname

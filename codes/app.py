@@ -8,11 +8,14 @@ import PyQt5
 import sys
 import os
 from PyQt5.QtCore import pyqtSlot
+from registerDataBase import RegisterToDataBase 
 
 class Ui_Main(QtWidgets.QWidget):
     def setupUi(self, Main):
         Main.setObjectName('Main')
         Main.resize(1200, 900)
+
+        self.MYSQL_DB = RegisterToDataBase()
 
         self.QtStack = QtWidgets.QStackedLayout()
 
@@ -56,6 +59,16 @@ class Main(QMainWindow, Ui_Main):
                 QtWidgets.QMessageBox.about(None, "Ooops!", "Seu E-mail e Invalido.")
             else:
                 QtWidgets.QMessageBox.about(None, "Muito Bem!", "Cadastro Realizado Com Sucesso.")
+
+                self.MYSQL_DB.save_datas( 
+
+                    self.tela_cadastro.nameRegister.text(),
+                    self.tela_cadastro.lastNameRegister.text(),
+                    self.tela_cadastro.emailRegister.text(),
+                    self.tela_cadastro.passRegister.text(),
+
+                    )
+
                 self.tela_cadastro.passRepeatRegister.setText("")
                 self.tela_cadastro.lastNameRegister.setText("")
                 self.tela_cadastro.passRegister.setText("")
@@ -63,7 +76,8 @@ class Main(QMainWindow, Ui_Main):
                 self.tela_cadastro.nameRegister.setText("")
 
                 self.QtStack.setCurrentIndex(0)
-                
+        else:
+            QtWidgets.QMessageBox.about(None , "Ooops!" , "Preencha Todos Os Campos.")       
 
     	
 
