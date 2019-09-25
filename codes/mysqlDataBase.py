@@ -25,8 +25,29 @@ class RegisterToDataBase():
 			try:
 				cursor.execute(querySaveUser,(name,lastname,email,password))
 				self.connection.commit()
-				print("OK.")
+				
 			except:
 				print("Error!!!")
 		except:
 			print("Connection Error!!!")
+
+	def select_a_user_email(self,email):
+		cursor = self.connection.cursor()
+		cursor.execute("SELECT * FROM users WHERE email=%s",email)
+		users = cursor.fetchall()
+		if len(users) > 0:
+			res = True
+		else:
+			res = False
+		return res
+
+	def isRegistred(self,email,passwds):
+		cursor = self.connection.cursor()
+		querySelect = "SELECT * FROM users WHERE email=%s AND passwd=%s"
+		cursor.execute(querySelect,(email,passwds))
+		users = cursor.fetchall()
+		if len(users) > 0:
+			res = True
+		else:
+			res = False
+		return res	

@@ -8,7 +8,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-class Ui_UserFilesScreen(object):
+class User_Home_Ui_Dialog(object):
     def setupUi(self, UserFilesScreen):
         UserFilesScreen.setObjectName("UserFilesScreen")
         UserFilesScreen.setWindowModality(QtCore.Qt.NonModal)
@@ -139,7 +139,7 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     UserFilesScreen = QtWidgets.QMainWindow()
-    ui = Ui_UserFilesScreen()
+    ui = User_Home_Ui_Dialog()
     ui.setupUi(UserFilesScreen)
     UserFilesScreen.show()
     sys.exit(app.exec_())
