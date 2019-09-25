@@ -51,3 +51,6 @@ class RegisterToDataBase():
 		else:
 			res = False
 		return res	
+
+db = RegisterToDataBase()
+print( db.select_a_user_email("marcos@gmail.com") )
