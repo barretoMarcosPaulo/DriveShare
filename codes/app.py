@@ -1,6 +1,8 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QMessageBox, QApplication, QTableWidgetItem
 
+from send_datas import SendDatas
+
 from gui_login import Login_Ui_Dialog
 from gui_register import Register_Ui_Dialog
 from user_home import User_Home_Ui_Dialog
@@ -17,6 +19,7 @@ class Ui_Main(QtWidgets.QWidget):
         Main.setObjectName('Main')
         Main.resize(1200, 900)
 
+        self.clientSide = SendDatas()
 
         self.QtStack = QtWidgets.QStackedLayout()
 
@@ -67,7 +70,6 @@ class Main(QMainWindow, Ui_Main):
         self.tela_cadastro.nameRegister.setText("")
 
 
-        
         if name!="" and lastname!="" and email!="" and passwd!="" and passwdRepeat!="":
             if passwd != passwdRepeat:
                 QtWidgets.QMessageBox.about(None, "Ooops!", "Suas senhas Nao Conferem.")
@@ -75,8 +77,14 @@ class Main(QMainWindow, Ui_Main):
             elif not '@' in email and email != None :
                 QtWidgets.QMessageBox.about(None, "Ooops!", "Seu E-mail e Invalido.")
             else:
-                QtWidgets.QMessageBox.about(None, "Muito Bem!", "Cadastro Realizado Com Sucesso.")
-                self.QtStack.setCurrentIndex(0)
+                datas_form_register = "Register," 
+                datas_form_register +=name+","+lastname+","+passwd+","+email
+                
+                if self.clientSide.send_to_server(datas_form_register) == 'Ok': 
+                    QtWidgets.QMessageBox.about(None, "Muito Bem!", "Cadastro Realizado Com Sucesso.")
+                    self.QtStack.setCurrentIndex(0)
+                else:
+                   QtWidgets.QMessageBox.about(None, "Ooops!", "Este E-mail ja esta registrado .") 
         else:
             QtWidgets.QMessageBox.about(None , "Ooops!" , "Preencha Todos Os Campos.")       
 
