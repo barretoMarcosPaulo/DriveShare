@@ -1,6 +1,8 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QMessageBox, QApplication, QTableWidgetItem
 
+from send_datas import ClientSide
+
 from gui_login import Login_Ui_Dialog
 from gui_register import Register_Ui_Dialog
 from user_home import User_Home_Ui_Dialog
@@ -16,6 +18,9 @@ class Ui_Main(QtWidgets.QWidget):
     def setupUi(self, Main):
         Main.setObjectName('Main')
         Main.resize(1200, 900)
+
+        self.connection = ClientSide()
+        
 
         self.QtStack = QtWidgets.QStackedLayout()
 
@@ -53,6 +58,8 @@ class Main(QMainWindow, Ui_Main):
         self.QtStack.setCurrentIndex(1)
 
     def registerGetDatas(self):
+        datas_form_register = "register,"
+
         passwdRepeat = self.tela_cadastro.passRepeatRegister.text()
         lastname = self.tela_cadastro.lastNameRegister.text()
         passwd = self.tela_cadastro.passRegister.text()
@@ -65,23 +72,40 @@ class Main(QMainWindow, Ui_Main):
         self.tela_cadastro.emailRegister.setText("")
         self.tela_cadastro.nameRegister.setText("")
 
-
+        
         if name!="" and lastname!="" and email!="" and passwd!="" and passwdRepeat!="":
             if passwd != passwdRepeat:
                 QtWidgets.QMessageBox.about(None, "Ooops!", "Suas senhas Nao Conferem.")
 
             elif not '@' in email and email != None :
-                QtWidgets.QMessageBox.about(None, "Ooops!", "Seu E-mail e Invalido.")  
+                QtWidgets.QMessageBox.about(None, "Ooops!", "Seu E-mail e Invalido.")
+            else:
+                datas_form_register += name+","+lastname+","+email+","+passwd
+                if self.connection.sendDatas(datas_form_register):
+                    QtWidgets.QMessageBox.about(None, "Muito Bem!", "Cadastro Realizado.")
+                    self.QtStack.setCurrentIndex(0)
+                else:
+                    QtWidgets.QMessageBox.about(None, "Ooops!", "E-mail ja cadastrado.")
+                  
         else:
             QtWidgets.QMessageBox.about(None , "Ooops!" , "Preencha Todos Os Campos.")       
 
     def loginUser(self):
         user_email = self.tela_login.emailLogin.text()
         user_pass = self.tela_login.passLogin.text()
+        
         datas_form_login = "login,"
+        
         if user_email!="" and user_pass!="":
             if not '@' in user_email:
                 QtWidgets.QMessageBox.about(None, "Ooops!", "Esse E-mail esta invalido.")
+            else:
+                datas_form_login+=user_email+","+user_pass
+                if self.connection.sendDatas(datas_form_login):
+                    self.QtStack.setCurrentIndex(2)
+                else:
+                    QtWidgets.QMessageBox.about(None, "Ooops!", "e-mail e/oi usuario incorretos!")
+
         else:
             QtWidgets.QMessageBox.about(None, "Ooops!", "Preencha Todos Os Campos.")
 
