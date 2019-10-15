@@ -40,7 +40,9 @@ class ClientSide():
 			return False
 		else:
 			return True
-		
+	
+	def sendFile(self, path, fileName):
+		self.client_socket.send(fileName.encode()) 
 
 	def closeConnection(self):
 		self.client_socket.close()
