@@ -6,7 +6,7 @@ class ClientSide():
 		self.port = 3000
 		self.address=((self.host,self.port))
 		self.client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
-		self.client_socket.connect(self.address)
+		self.connect()
 
 	def connect(self):
 		connected = True
@@ -23,7 +23,7 @@ class ClientSide():
 		while(connection_attempt<5):
 			try:
 				print("try connection...")
-				time.sleep(5)
+				time.sleep(2)
 				self.client_socket.connect(self.address)
 				connected = True
 				break

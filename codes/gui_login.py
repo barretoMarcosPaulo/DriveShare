@@ -6,7 +6,7 @@ import time
 class Login_Ui_Dialog(object):
     
     def setupUi(self, Dialog):
-        Dialog.setObjectName("Dialog")
+        Dialog.setObjectName("Entre em sua conta")
         Dialog.resize(629, 494)
         Dialog.setStyleSheet("")
         self.emailLogin = QtWidgets.QLineEdit(Dialog)

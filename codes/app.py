@@ -5,7 +5,7 @@ from send_datas import ClientSide
 
 from gui_login import Login_Ui_Dialog
 from gui_register import Register_Ui_Dialog
-from user_home import User_Home_Ui_Dialog
+from home import Ui_UserFilesScreen
 
 from PyQt5.QtGui import QPixmap
 import PyQt5
@@ -14,13 +14,12 @@ import os
 from PyQt5.QtCore import pyqtSlot
 
 
-class Ui_Main(QtWidgets.QWidget):
+class Ui_Main(QtWidgets.QWidget): 
     def setupUi(self, Main):
         Main.setObjectName('Main')
         Main.resize(1200, 900)
 
         self.connection = ClientSide()
-        
 
         self.QtStack = QtWidgets.QStackedLayout()
 
@@ -35,7 +34,7 @@ class Ui_Main(QtWidgets.QWidget):
         self.tela_cadastro = Register_Ui_Dialog()
         self.tela_cadastro.setupUi(self.stack1)
 
-        self.tela_home = User_Home_Ui_Dialog()
+        self.tela_home = Ui_UserFilesScreen()
         self.tela_home.setupUi(self.stack2)
 
 
@@ -66,11 +65,6 @@ class Main(QMainWindow, Ui_Main):
         email = self.tela_cadastro.emailRegister.text()
         name = self.tela_cadastro.nameRegister.text()
 
-        self.tela_cadastro.passRepeatRegister.setText("")
-        self.tela_cadastro.lastNameRegister.setText("")
-        self.tela_cadastro.passRegister.setText("")
-        self.tela_cadastro.emailRegister.setText("")
-        self.tela_cadastro.nameRegister.setText("")
 
         
         if name!="" and lastname!="" and email!="" and passwd!="" and passwdRepeat!="":
@@ -83,6 +77,11 @@ class Main(QMainWindow, Ui_Main):
                 datas_form_register += name+","+lastname+","+email+","+passwd
                 if self.connection.sendDatas(datas_form_register):
                     QtWidgets.QMessageBox.about(None, "Muito Bem!", "Cadastro Realizado.")
+                    self.tela_cadastro.passRepeatRegister.setText("")
+                    self.tela_cadastro.lastNameRegister.setText("")
+                    self.tela_cadastro.passRegister.setText("")
+                    self.tela_cadastro.emailRegister.setText("")
+                    self.tela_cadastro.nameRegister.setText("")
                     self.QtStack.setCurrentIndex(0)
                 else:
                     QtWidgets.QMessageBox.about(None, "Ooops!", "E-mail ja cadastrado.")
