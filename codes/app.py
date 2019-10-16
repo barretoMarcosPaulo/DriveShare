@@ -74,7 +74,7 @@ class Main(QMainWindow, Ui_Main):
             elif not '@' in email and email != None :
                 QtWidgets.QMessageBox.about(None, "Ooops!", "Seu E-mail e Invalido.")
             else:
-                datas_form_register += name+","+lastname+","+email+","+passwd
+                datas_form_register += name+","+lastname+","+email+","+passwd 
                 if self.connection.sendDatas(datas_form_register):
                     QtWidgets.QMessageBox.about(None, "Muito Bem!", "Cadastro Realizado.")
                     self.tela_cadastro.passRepeatRegister.setText("")
