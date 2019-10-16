@@ -20,5 +20,5 @@ The current version has a bug in database operations, but the server is running 
 
 <img src="screenshots/Registre.png" width="700px">
 <img src="screenshots/Success.png" width="700px">
-<img src="screenshots/home.png" width="700px">
+<img src="screenshots/new_home.png" width="700px">
 
