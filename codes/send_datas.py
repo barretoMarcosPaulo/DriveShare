@@ -1,8 +1,11 @@
 import socket 
 import time
+from datetime import datetime
+
 class ClientSide():
 	def __init__(self):
-		self.host = '168.235.110.16'
+		# self.host = '168.235.110.16'
+		self.host = 'localhost'
 		self.port = 3000
 		self.address=((self.host,self.port))
 		self.client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
@@ -46,3 +49,10 @@ class ClientSide():
 
 	def closeConnection(self):
 		self.client_socket.close()
+
+# teste = ClientSide()
+
+# a = datetime.now()
+# while True:
+# 	teste.sendDatas(str(a))
+# teste.closeConnection()
