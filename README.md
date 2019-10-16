@@ -12,6 +12,10 @@ Tool implemented in python3 for file uploads. The tool has user registration, au
 
 4 - Install python3 and pyqt5
 
+# Bugs
+
+The current version has a bug in database operations, but the server is running multithreaded
+
 # Registration Screen
 
 <img src="screenshots/Registre.png" width="700px">
