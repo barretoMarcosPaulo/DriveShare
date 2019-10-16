@@ -6,7 +6,7 @@ from send_datas import ClientSide
 from gui_login import Login_Ui_Dialog
 from gui_register import Register_Ui_Dialog
 from home import Ui_UserFilesScreen
-
+from upload import Ui_Upload
 from PyQt5.QtGui import QPixmap
 import PyQt5
 import sys
@@ -26,6 +26,7 @@ class Ui_Main(QtWidgets.QWidget):
         self.stack0 = QtWidgets.QMainWindow()
         self.stack1 = QtWidgets.QMainWindow()
         self.stack2 = QtWidgets.QMainWindow()
+        self.stack3 = QtWidgets.QMainWindow()
 
 
         self.tela_login = Login_Ui_Dialog()
@@ -37,10 +38,13 @@ class Ui_Main(QtWidgets.QWidget):
         self.tela_home = Ui_UserFilesScreen()
         self.tela_home.setupUi(self.stack2)
 
+        self.tela_upload = Ui_Upload()
+        self.tela_upload.setupUi(self.stack3)
 
         self.QtStack.addWidget(self.stack0)
         self.QtStack.addWidget(self.stack1)
         self.QtStack.addWidget(self.stack2)
+        self.QtStack.addWidget(self.stack3)
 
 
 
@@ -52,10 +56,18 @@ class Main(QMainWindow, Ui_Main):
         self.tela_cadastro.buttonRegister.clicked.connect(self.registerGetDatas)
         self.tela_login.loginButton.clicked.connect(self.loginUser)
         self.tela_home.SearchButtom.clicked.connect(self.search)
+        self.tela_home.uploadButton.clicked.connect(self.openUploadScreen)
+        self.tela_upload.buttonCancelar.clicked.connect(self.backHomePage)
 
     def openLoginScreen(self):
         self.QtStack.setCurrentIndex(1)
-
+    
+    def backHomePage(self):
+        self.QtStack.setCurrentIndex(2)
+    
+    def openUploadScreen(self):
+        self.QtStack.setCurrentIndex(3)
+    
     def registerGetDatas(self):
         datas_form_register = "register,"
 
