@@ -10,8 +10,15 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QFileDialog
 
+from PyQt5.QtWidgets import QFileDialog
+import socket 
+import os
+import pickle
+
 class Ui_Upload(object):
     def setupUi(self, Form):
+
+
         Form.setObjectName("Form")
         Form.resize(731, 480)
         self.label = QtWidgets.QLabel(Form)
@@ -51,7 +58,6 @@ class Ui_Upload(object):
         self.buttonEnviar.setText(_translate("Form", "Enviar"))
         self.buttonCancelar.setText(_translate("Form", "Cancelar"))
         self.label_file.setText(_translate("Form", "Nenhum Arquivo Selecionado"))
-
 
 if __name__ == "__main__":
     import sys

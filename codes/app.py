@@ -1,5 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QMainWindow, QMessageBox, QApplication, QTableWidgetItem
+from PyQt5.QtWidgets import QMainWindow, QMessageBox, QApplication, QTableWidgetItem,QFileDialog
 
 from send_datas import ClientSide
 
@@ -12,15 +12,14 @@ import PyQt5
 import sys
 import os
 from PyQt5.QtCore import pyqtSlot
-
-
+from userlogado import *
 class Ui_Main(QtWidgets.QWidget): 
     def setupUi(self, Main):
         Main.setObjectName('Main')
         Main.resize(1200, 900)
 
         self.connection = ClientSide()
-
+        self.path = " "
         self.QtStack = QtWidgets.QStackedLayout()
 
         self.stack0 = QtWidgets.QMainWindow()
@@ -58,6 +57,24 @@ class Main(QMainWindow, Ui_Main):
         self.tela_home.SearchButtom.clicked.connect(self.search)
         self.tela_home.uploadButton.clicked.connect(self.openUploadScreen)
         self.tela_upload.buttonCancelar.clicked.connect(self.backHomePage)
+        self.tela_upload.buttonUpload.clicked.connect(self.selectFile)
+        self.tela_upload.buttonEnviar.clicked.connect(self.sendFile)
+
+
+    def selectFile(self):
+        filename = QFileDialog.getOpenFileName()
+        self.path = filename[0]
+    
+    def sendFile(self):
+        print(self.path)
+        name = self.path.split("/")
+        name = name[len(name)-1]
+        send = "upload,"+name
+        if self.connection.sendDatas(send):
+            print("Pronto para o arquivo")
+            self.connection.sendFile(self.path) 
+            
+ 
 
     def openLoginScreen(self):
         self.QtStack.setCurrentIndex(1)
@@ -90,7 +107,7 @@ class Main(QMainWindow, Ui_Main):
                 if self.connection.sendDatas(datas_form_register):
                     QtWidgets.QMessageBox.about(None, "Muito Bem!", "Cadastro Realizado.")
                     self.tela_cadastro.passRepeatRegister.setText("")
-                    self.tela_cadastro.lastNameRegister.setText("")
+                    # self.tela_cadastro.lastNbuttonEnviarbuttonEnviarameRegister.setText("")
                     self.tela_cadastro.passRegister.setText("")
                     self.tela_cadastro.emailRegister.setText("")
                     self.tela_cadastro.nameRegister.setText("")
@@ -104,21 +121,20 @@ class Main(QMainWindow, Ui_Main):
     def loginUser(self):
         user_email = self.tela_login.emailLogin.text()
         user_pass = self.tela_login.passLogin.text()
-        
-        datas_form_login = "login,"
-        
-        if user_email!="" and user_pass!="":
-            if not '@' in user_email:
-                QtWidgets.QMessageBox.about(None, "Ooops!", "Esse E-mail esta invalido.")
-            else:
-                datas_form_login+=user_email+","+user_pass
-                if self.connection.sendDatas(datas_form_login):
-                    self.QtStack.setCurrentIndex(2)
-                else:
-                    QtWidgets.QMessageBox.about(None, "Ooops!", "e-mail e/oi usuario incorretos!")
+        self.QtStack.setCurrentIndex(2)
+        # datas_form_login = "login,"
+        # if user_email!="" and user_pass!="":
+        #     if not '@' in user_email:
+        #         QtWidgets.QMessageBox.about(None, "Ooops!", "Esse E-mail esta invalido.")
+        #     else:
+        #         datas_form_login+=user_email+","+user_pass
+        #         if self.connection.sendDatas(datas_form_login):
+        #             self.QtStack.setCurrentIndex(2)
+        #         else:
+        #             QtWidgets.QMessageBox.about(None, "Ooops!", "e-mail e/oi usuario incorretos!")
 
-        else:
-            QtWidgets.QMessageBox.about(None, "Ooops!", "Preencha Todos Os Campos.")
+        # else:
+        #     QtWidgets.QMessageBox.about(None, "Ooops!", "Preencha Todos Os Campos.")
 
 
     def search(self):

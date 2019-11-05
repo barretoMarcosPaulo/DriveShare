@@ -1,12 +1,13 @@
 import socket 
 import time
 from datetime import datetime
+import pickle
 
 class ClientSide():
 	def __init__(self):
 		# self.host = '168.235.110.16'
 		self.host = 'localhost'
-		self.port = 3000
+		self.port = 8000
 		self.address=((self.host,self.port))
 		self.client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
 		self.connect()
@@ -43,9 +44,30 @@ class ClientSide():
 			return False
 		else:
 			return True
+
 	
-	def sendFile(self, path, fileName):
-		self.client_socket.send(fileName.encode()) 
+	
+	def sendFile(self, path):
+
+		fileName = path
+		f = open(fileName,'rb')
+		print('Sending...')
+
+		self.client_socket.send(fileName.encode())
+
+		l = f.read(1024)
+		while (l):
+		    print('Sending...')
+		    self.client_socket.send(l)
+		    l = f.read(1024)
+		f.close()
+		time.sleep(3)
+		self.client_socket.send("done".encode())
+		print("Done Sending")
+
+
+
+
 
 	def closeConnection(self):
 		self.client_socket.close()
