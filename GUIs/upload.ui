@@ -143,7 +143,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Tipo de Arquivo</string>
+    <string>Destino do Arquivo</string>
    </property>
   </widget>
   <widget class="QComboBox" name="comboBox">
@@ -157,27 +157,27 @@
    </property>
    <item>
     <property name="text">
-     <string>Documento</string>
+     <string>documentos</string>
     </property>
    </item>
    <item>
     <property name="text">
-     <string>Imagem</string>
+     <string>imagens</string>
     </property>
    </item>
    <item>
     <property name="text">
-     <string>Musica</string>
+     <string>musicas</string>
     </property>
    </item>
    <item>
     <property name="text">
-     <string>Video</string>
+     <string>videos</string>
     </property>
    </item>
    <item>
     <property name="text">
-     <string>Outro</string>
+     <string>outros</string>
     </property>
    </item>
    <item>

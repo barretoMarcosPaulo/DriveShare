@@ -72,15 +72,11 @@ class Main(QMainWindow, Ui_Main):
         self.tela_upload.label_file.setText(name)
     
     def sendFile(self):
-        print(self.path)
         name = self.path.split("/")
         name = name[len(name)-1]
-        send = "upload,"+name+","+self.usuario.email
-        print(send)
+        send = "upload,"+name+","+self.usuario.email+","+str(self.tela_upload.comboBox.currentText())
         send = send.replace(" ", "")
-        print(send)
         if self.connection.sendDatas(send):
-            print("Pronto para o arquivo")
             self.connection.sendFile(self.path) 
             
  
