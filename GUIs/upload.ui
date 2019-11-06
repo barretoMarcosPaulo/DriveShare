@@ -50,14 +50,14 @@
   <widget class="QPushButton" name="buttonUpload">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>190</y>
-     <width>241</width>
-     <height>61</height>
+     <x>310</x>
+     <y>170</y>
+     <width>171</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="text">
-    <string>Escolher Arquivo do Computador</string>
+    <string>Arquivo</string>
    </property>
   </widget>
   <widget class="QPushButton" name="buttonEnviar">
@@ -89,14 +89,121 @@
   <widget class="QLabel" name="label_file">
    <property name="geometry">
     <rect>
-     <x>280</x>
-     <y>260</y>
+     <x>300</x>
+     <y>330</y>
+     <width>221</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Nenhum Arquivo Selecionado</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>180</y>
      <width>181</width>
      <height>17</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
    <property name="text">
-    <string>Nenhum Arquivo Selecionado</string>
+    <string>Escolha um arquivo</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>250</y>
+     <width>181</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Tipo de Arquivo</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>240</y>
+     <width>171</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Documento</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Imagem</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Musica</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Video</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Outro</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string/>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="label_file_2">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>330</y>
+     <width>81</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Arquivo:</string>
    </property>
   </widget>
  </widget>

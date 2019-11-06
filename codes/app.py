@@ -13,6 +13,8 @@ import sys
 import os
 from PyQt5.QtCore import pyqtSlot
 from userlogado import *
+
+
 class Ui_Main(QtWidgets.QWidget): 
     def setupUi(self, Main):
         Main.setObjectName('Main')
@@ -20,6 +22,7 @@ class Ui_Main(QtWidgets.QWidget):
 
         self.connection = ClientSide()
         self.path = " "
+        self.usuario = UserLogado()
         self.QtStack = QtWidgets.QStackedLayout()
 
         self.stack0 = QtWidgets.QMainWindow()
@@ -64,17 +67,28 @@ class Main(QMainWindow, Ui_Main):
     def selectFile(self):
         filename = QFileDialog.getOpenFileName()
         self.path = filename[0]
+        name = self.path.split("/")
+        name = name[len(name)-1]
+        self.tela_upload.label_file.setText(name)
     
     def sendFile(self):
         print(self.path)
         name = self.path.split("/")
         name = name[len(name)-1]
-        send = "upload,"+name
+        send = "upload,"+name+","+self.usuario.email
+        print(send)
+        send = send.replace(" ", "")
+        print(send)
         if self.connection.sendDatas(send):
             print("Pronto para o arquivo")
             self.connection.sendFile(self.path) 
             
  
+
+    def homePageUser(self):
+        self.QtStack.setCurrentIndex(2)
+        self.tela_home.label.setText(self.usuario.primaryName)
+
 
     def openLoginScreen(self):
         self.QtStack.setCurrentIndex(1)
@@ -92,7 +106,7 @@ class Main(QMainWindow, Ui_Main):
         lastname = self.tela_cadastro.lastNameRegister.text()
         passwd = self.tela_cadastro.passRegister.text()
         email = self.tela_cadastro.emailRegister.text()
-        name = self.tela_cadastro.nameRegister.text()
+        name = self.tela_cadastro.nameRegister.text() 
 
 
         
@@ -121,20 +135,28 @@ class Main(QMainWindow, Ui_Main):
     def loginUser(self):
         user_email = self.tela_login.emailLogin.text()
         user_pass = self.tela_login.passLogin.text()
-        self.QtStack.setCurrentIndex(2)
-        # datas_form_login = "login,"
-        # if user_email!="" and user_pass!="":
-        #     if not '@' in user_email:
-        #         QtWidgets.QMessageBox.about(None, "Ooops!", "Esse E-mail esta invalido.")
-        #     else:
-        #         datas_form_login+=user_email+","+user_pass
-        #         if self.connection.sendDatas(datas_form_login):
-        #             self.QtStack.setCurrentIndex(2)
-        #         else:
-        #             QtWidgets.QMessageBox.about(None, "Ooops!", "e-mail e/oi usuario incorretos!")
 
-        # else:
-        #     QtWidgets.QMessageBox.about(None, "Ooops!", "Preencha Todos Os Campos.")
+        datas_form_login = "login,"
+        if user_email!="" and user_pass!="":
+            if not '@' in user_email:
+                QtWidgets.QMessageBox.about(None, "Ooops!", "Esse E-mail esta invalido.")
+            else:
+                datas_form_login+=user_email+","+user_pass
+                
+                status,response = self.connection.sendDatas(datas_form_login)
+
+                if status:
+                    self.usuario.id = response[0]
+                    self.usuario.primaryName = response[1]
+                    self.usuario.lastName = response[2]
+                    self.usuario.email = response[3]
+                    print(self.usuario)
+                    self.homePageUser()
+                else:
+                    QtWidgets.QMessageBox.about(None, "Ooops!", "e-mail e/oi usuario incorretos!")
+
+        else:
+            QtWidgets.QMessageBox.about(None, "Ooops!", "Preencha Todos Os Campos.")
 
 
     def search(self):

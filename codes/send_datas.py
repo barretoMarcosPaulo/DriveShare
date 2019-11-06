@@ -1,7 +1,6 @@
 import socket 
 import time
 from datetime import datetime
-import pickle
 
 class ClientSide():
 	def __init__(self):
@@ -40,12 +39,23 @@ class ClientSide():
 				
 		self.client_socket.send(content.encode()) 
 		# Return error/success and message
-		if self.client_socket.recv(1024).decode() == "error":
+		
+		resposta = self.client_socket.recv(1024).decode()
+		print(resposta)
+		if resposta == "error":
 			return False
-		else:
+		if resposta == "ok":
 			return True
+		else:
+			# resposta = resposta.split(",")
+			resposta = resposta.replace("[","")
+			resposta = resposta.replace("]","")
+			resposta = resposta.replace("','","")
+			resposta = resposta.replace("'","")
+			resposta=resposta.split(",")
+			return True,resposta
 
-	
+
 	
 	def sendFile(self, path):
 
