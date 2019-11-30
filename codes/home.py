@@ -31,8 +31,6 @@ class Ui_UserFilesScreen(object):
                 "color: #FFFFFF;")
                 tabela.setCellWidget(row_number, 4, self.buttons[-1])
 
-
-
     def setupUi(self, UserFilesScreen):
         UserFilesScreen.setObjectName("UserFilesScreen")
         UserFilesScreen.setWindowModality(QtCore.Qt.NonModal)
@@ -42,7 +40,7 @@ class Ui_UserFilesScreen(object):
         self.centralwidget = QtWidgets.QWidget(UserFilesScreen)
         self.centralwidget.setObjectName("centralwidget")
         self.uploadButton = QtWidgets.QPushButton(self.centralwidget)
-        self.uploadButton.setGeometry(QtCore.QRect(820, 90, 81, 31))
+        self.uploadButton.setGeometry(QtCore.QRect(390, 560, 181, 31))
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(138, 226, 52))
         brush.setStyle(QtCore.Qt.SolidPattern)
@@ -257,7 +255,7 @@ class Ui_UserFilesScreen(object):
         item = self.tableWidget.horizontalHeaderItem(0)
         item.setText(_translate("UserFilesScreen", "Arquivo"))
         item = self.tableWidget.horizontalHeaderItem(1)
-        item.setText(_translate("UserFilesScreen", "Diretório"))
+        item.setText(_translate("UserFilesScreen", "New Column"))
         item = self.tableWidget.horizontalHeaderItem(2)
         item.setText(_translate("UserFilesScreen", "Tamanho(MB)"))
         item = self.tableWidget.horizontalHeaderItem(3)
@@ -268,7 +266,7 @@ class Ui_UserFilesScreen(object):
         item = self.tableWidget_2.horizontalHeaderItem(0)
         item.setText(_translate("UserFilesScreen", "Arquivo"))
         item = self.tableWidget_2.horizontalHeaderItem(1)
-        item.setText(_translate("UserFilesScreen", "Diretório"))
+        item.setText(_translate("UserFilesScreen", "New Column"))
         item = self.tableWidget_2.horizontalHeaderItem(2)
         item.setText(_translate("UserFilesScreen", "Tamanho(MB)"))
         item = self.tableWidget_2.horizontalHeaderItem(3)
@@ -279,7 +277,7 @@ class Ui_UserFilesScreen(object):
         item = self.tableWidget_3.horizontalHeaderItem(0)
         item.setText(_translate("UserFilesScreen", "Arquivo"))
         item = self.tableWidget_3.horizontalHeaderItem(1)
-        item.setText(_translate("UserFilesScreen", "Diretório"))
+        item.setText(_translate("UserFilesScreen", "New Column"))
         item = self.tableWidget_3.horizontalHeaderItem(2)
         item.setText(_translate("UserFilesScreen", "Tamanho(MB)"))
         item = self.tableWidget_3.horizontalHeaderItem(3)
@@ -290,7 +288,7 @@ class Ui_UserFilesScreen(object):
         item = self.tableWidget_4.horizontalHeaderItem(0)
         item.setText(_translate("UserFilesScreen", "Arquivo"))
         item = self.tableWidget_4.horizontalHeaderItem(1)
-        item.setText(_translate("UserFilesScreen", "Diretório"))
+        item.setText(_translate("UserFilesScreen", "New Column"))
         item = self.tableWidget_4.horizontalHeaderItem(2)
         item.setText(_translate("UserFilesScreen", "Tamanho(MB)"))
         item = self.tableWidget_4.horizontalHeaderItem(3)
@@ -301,7 +299,7 @@ class Ui_UserFilesScreen(object):
         item = self.tableWidget_5.horizontalHeaderItem(0)
         item.setText(_translate("UserFilesScreen", "Arquivo"))
         item = self.tableWidget_5.horizontalHeaderItem(1)
-        item.setText(_translate("UserFilesScreen", "Diretório"))
+        item.setText(_translate("UserFilesScreen", "New Column"))
         item = self.tableWidget_5.horizontalHeaderItem(2)
         item.setText(_translate("UserFilesScreen", "Tamanho(MB)"))
         item = self.tableWidget_5.horizontalHeaderItem(3)
@@ -312,7 +310,7 @@ class Ui_UserFilesScreen(object):
         item = self.tableWidget_6.horizontalHeaderItem(0)
         item.setText(_translate("UserFilesScreen", "Arquivo"))
         item = self.tableWidget_6.horizontalHeaderItem(1)
-        item.setText(_translate("UserFilesScreen", "Diretório"))
+        item.setText(_translate("UserFilesScreen", "New Column"))
         item = self.tableWidget_6.horizontalHeaderItem(2)
         item.setText(_translate("UserFilesScreen", "Tamanho(MB)"))
         item = self.tableWidget_6.horizontalHeaderItem(3)
@@ -323,7 +321,7 @@ class Ui_UserFilesScreen(object):
         item = self.tableWidget_7.horizontalHeaderItem(0)
         item.setText(_translate("UserFilesScreen", "Arquivo"))
         item = self.tableWidget_7.horizontalHeaderItem(1)
-        item.setText(_translate("UserFilesScreen", "Diretório"))
+        item.setText(_translate("UserFilesScreen", "New Column"))
         item = self.tableWidget_7.horizontalHeaderItem(2)
         item.setText(_translate("UserFilesScreen", "Tamanho(MB)"))
         item = self.tableWidget_7.horizontalHeaderItem(3)
@@ -331,7 +329,6 @@ class Ui_UserFilesScreen(object):
         item = self.tableWidget_7.horizontalHeaderItem(4)
         item.setText(_translate("UserFilesScreen", "Ações"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_6), _translate("UserFilesScreen", "Outros"))
-
 
 if __name__ == "__main__":
     import sys

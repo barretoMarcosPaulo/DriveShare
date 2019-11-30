@@ -13,7 +13,7 @@ import sys
 import os
 from PyQt5.QtCore import pyqtSlot
 from userlogado import *
-
+import time
 
 class Ui_Main(QtWidgets.QWidget): 
     def setupUi(self, Main):
@@ -129,6 +129,16 @@ class Main(QMainWindow, Ui_Main):
         else:
             QtWidgets.QMessageBox.about(None , "Ooops!" , "Preencha Todos Os Campos.")       
 
+
+    def load_infos(self):
+        recentes = []
+        documentos = []
+        imagens = []
+        videos = []
+        musicas = []
+        outros = []
+        self.connection.request_files(self.usuario.id,"imagens")
+
     def loginUser(self):
         user_email = self.tela_login.emailLogin.text()
         user_pass = self.tela_login.passLogin.text()
@@ -150,9 +160,9 @@ class Main(QMainWindow, Ui_Main):
                     
                     
                     # self.tela_home.loadData(b,self.tela_home.tableWidget)
-
-
+                    # self.load_infos()
                     self.homePageUser()
+
                 else:
                     QtWidgets.QMessageBox.about(None, "Ooops!", "e-mail e/oi usuario incorretos!")
 

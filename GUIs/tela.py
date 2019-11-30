@@ -20,7 +20,7 @@ class Ui_UserFilesScreen(object):
         self.centralwidget = QtWidgets.QWidget(UserFilesScreen)
         self.centralwidget.setObjectName("centralwidget")
         self.uploadButton = QtWidgets.QPushButton(self.centralwidget)
-        self.uploadButton.setGeometry(QtCore.QRect(820, 90, 81, 31))
+        self.uploadButton.setGeometry(QtCore.QRect(390, 560, 181, 31))
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(138, 226, 52))
         brush.setStyle(QtCore.Qt.SolidPattern)

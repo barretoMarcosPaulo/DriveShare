@@ -26,9 +26,9 @@
    <widget class="QPushButton" name="uploadButton">
     <property name="geometry">
      <rect>
-      <x>820</x>
-      <y>90</y>
-      <width>81</width>
+      <x>390</x>
+      <y>560</y>
+      <width>181</width>
       <height>31</height>
      </rect>
     </property>
