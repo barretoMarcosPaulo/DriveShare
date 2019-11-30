@@ -223,13 +223,13 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>6</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
       <string>Recentes</string>
      </attribute>
-     <widget class="QTreeWidget" name="tabela_recentes">
+     <widget class="QTreeWidget" name="tabela_musicas_2">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -274,6 +274,17 @@
       <column>
        <property name="text">
         <string>Data </string>
+       </property>
+       <property name="font">
+        <font>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Ação</string>
        </property>
        <property name="font">
         <font>
@@ -288,7 +299,7 @@
      <attribute name="title">
       <string>Documentos</string>
      </attribute>
-     <widget class="QTreeWidget" name="tabela_documentos">
+     <widget class="QTreeWidget" name="tabela_musicas_3">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -333,6 +344,17 @@
       <column>
        <property name="text">
         <string>Data </string>
+       </property>
+       <property name="font">
+        <font>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Ação</string>
        </property>
        <property name="font">
         <font>
@@ -347,7 +369,7 @@
      <attribute name="title">
       <string>Imagens</string>
      </attribute>
-     <widget class="QTreeWidget" name="tabela_imagens">
+     <widget class="QTreeWidget" name="tabela_musicas_4">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -392,6 +414,17 @@
       <column>
        <property name="text">
         <string>Data </string>
+       </property>
+       <property name="font">
+        <font>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Ação</string>
        </property>
        <property name="font">
         <font>
@@ -406,7 +439,7 @@
      <attribute name="title">
       <string>Vídeos</string>
      </attribute>
-     <widget class="QTreeWidget" name="tabela_videos">
+     <widget class="QTreeWidget" name="tabela_musicas_5">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -451,6 +484,17 @@
       <column>
        <property name="text">
         <string>Data </string>
+       </property>
+       <property name="font">
+        <font>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Ação</string>
        </property>
        <property name="font">
         <font>
@@ -535,7 +579,7 @@
      <attribute name="title">
       <string>Compartilhados</string>
      </attribute>
-     <widget class="QTreeWidget" name="tabela_compartilhados">
+     <widget class="QTreeWidget" name="tabela_musicas_6">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -580,6 +624,17 @@
       <column>
        <property name="text">
         <string>Data </string>
+       </property>
+       <property name="font">
+        <font>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Ação</string>
        </property>
        <property name="font">
         <font>
@@ -594,7 +649,7 @@
      <attribute name="title">
       <string>Outros</string>
      </attribute>
-     <widget class="QTreeWidget" name="tabela_outros">
+     <widget class="QTreeWidget" name="tabela_musicas_7">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -602,9 +657,6 @@
         <width>871</width>
         <height>421</height>
        </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"/>
       </property>
       <column>
        <property name="text">
@@ -642,6 +694,17 @@
       <column>
        <property name="text">
         <string>Data </string>
+       </property>
+       <property name="font">
+        <font>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Ação</string>
        </property>
        <property name="font">
         <font>
