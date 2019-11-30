@@ -22,6 +22,7 @@ class Ui_Main(QtWidgets.QWidget):
 
         self.connection = ClientSide()
         self.path = " "
+        self.file_size = str()
         self.usuario = UserLogado()
         self.QtStack = QtWidgets.QStackedLayout()
 
@@ -67,6 +68,7 @@ class Main(QMainWindow, Ui_Main):
     def selectFile(self):
         filename = QFileDialog.getOpenFileName()
         self.path = filename[0]
+        self.file_size = str(os.path.getsize(filename[0]))
         name = self.path.split("/")
         name = name[len(name)-1]
         self.tela_upload.label_file.setText(name)
@@ -74,7 +76,7 @@ class Main(QMainWindow, Ui_Main):
     def sendFile(self):
         name = self.path.split("/")
         name = name[len(name)-1]
-        send = "upload,"+name+","+self.usuario.email+","+str(self.tela_upload.comboBox.currentText())
+        send = "upload,"+name+","+self.usuario.email+","+self.usuario.id+","+str(self.tela_upload.comboBox.currentText()+","+self.file_size )
         send = send.replace(" ", "")
         if self.connection.sendDatas(send):
             self.connection.sendFile(self.path) 
