@@ -223,13 +223,13 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>6</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
       <string>Recentes</string>
      </attribute>
-     <widget class="QTreeWidget" name="tabela_musicas_2">
+     <widget class="QTableWidget" name="tableWidget">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -238,59 +238,41 @@
         <height>421</height>
        </rect>
       </property>
+      <property name="minimumSize">
+       <size>
+        <width>871</width>
+        <height>421</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>871</width>
+        <height>421</height>
+       </size>
+      </property>
       <column>
        <property name="text">
         <string>Arquivo</string>
        </property>
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
+      </column>
+      <column>
+       <property name="text">
+        <string>New Column</string>
        </property>
       </column>
       <column>
        <property name="text">
         <string>Tamanho(MB)</string>
        </property>
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
+      </column>
+      <column>
+       <property name="text">
+        <string>Data</string>
        </property>
       </column>
       <column>
        <property name="text">
-        <string>Diretório</string>
-       </property>
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Data </string>
-       </property>
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Ação</string>
-       </property>
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
+        <string>Ações</string>
        </property>
       </column>
      </widget>
@@ -299,7 +281,7 @@
      <attribute name="title">
       <string>Documentos</string>
      </attribute>
-     <widget class="QTreeWidget" name="tabela_musicas_3">
+     <widget class="QTableWidget" name="tableWidget_2">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -312,55 +294,25 @@
        <property name="text">
         <string>Arquivo</string>
        </property>
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
+      </column>
+      <column>
+       <property name="text">
+        <string>New Column</string>
        </property>
       </column>
       <column>
        <property name="text">
         <string>Tamanho(MB)</string>
        </property>
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
+      </column>
+      <column>
+       <property name="text">
+        <string>Data</string>
        </property>
       </column>
       <column>
        <property name="text">
-        <string>Diretório</string>
-       </property>
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Data </string>
-       </property>
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Ação</string>
-       </property>
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
+        <string>Ações</string>
        </property>
       </column>
      </widget>
@@ -369,7 +321,7 @@
      <attribute name="title">
       <string>Imagens</string>
      </attribute>
-     <widget class="QTreeWidget" name="tabela_musicas_4">
+     <widget class="QTableWidget" name="tableWidget_3">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -382,55 +334,25 @@
        <property name="text">
         <string>Arquivo</string>
        </property>
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
+      </column>
+      <column>
+       <property name="text">
+        <string>New Column</string>
        </property>
       </column>
       <column>
        <property name="text">
         <string>Tamanho(MB)</string>
        </property>
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
+      </column>
+      <column>
+       <property name="text">
+        <string>Data</string>
        </property>
       </column>
       <column>
        <property name="text">
-        <string>Diretório</string>
-       </property>
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Data </string>
-       </property>
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Ação</string>
-       </property>
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
+        <string>Ações</string>
        </property>
       </column>
      </widget>
@@ -439,7 +361,7 @@
      <attribute name="title">
       <string>Vídeos</string>
      </attribute>
-     <widget class="QTreeWidget" name="tabela_musicas_5">
+     <widget class="QTableWidget" name="tableWidget_4">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -452,55 +374,25 @@
        <property name="text">
         <string>Arquivo</string>
        </property>
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
+      </column>
+      <column>
+       <property name="text">
+        <string>New Column</string>
        </property>
       </column>
       <column>
        <property name="text">
         <string>Tamanho(MB)</string>
        </property>
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
+      </column>
+      <column>
+       <property name="text">
+        <string>Data</string>
        </property>
       </column>
       <column>
        <property name="text">
-        <string>Diretório</string>
-       </property>
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Data </string>
-       </property>
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Ação</string>
-       </property>
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
+        <string>Ações</string>
        </property>
       </column>
      </widget>
@@ -509,7 +401,7 @@
      <attribute name="title">
       <string>Músicas</string>
      </attribute>
-     <widget class="QTreeWidget" name="tabela_musicas">
+     <widget class="QTableWidget" name="tableWidget_5">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -522,55 +414,25 @@
        <property name="text">
         <string>Arquivo</string>
        </property>
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
+      </column>
+      <column>
+       <property name="text">
+        <string>New Column</string>
        </property>
       </column>
       <column>
        <property name="text">
         <string>Tamanho(MB)</string>
        </property>
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
+      </column>
+      <column>
+       <property name="text">
+        <string>Data</string>
        </property>
       </column>
       <column>
        <property name="text">
-        <string>Diretório</string>
-       </property>
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Data </string>
-       </property>
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Ação</string>
-       </property>
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
+        <string>Ações</string>
        </property>
       </column>
      </widget>
@@ -579,7 +441,7 @@
      <attribute name="title">
       <string>Compartilhados</string>
      </attribute>
-     <widget class="QTreeWidget" name="tabela_musicas_6">
+     <widget class="QTableWidget" name="tableWidget_6">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -592,55 +454,25 @@
        <property name="text">
         <string>Arquivo</string>
        </property>
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
+      </column>
+      <column>
+       <property name="text">
+        <string>New Column</string>
        </property>
       </column>
       <column>
        <property name="text">
         <string>Tamanho(MB)</string>
        </property>
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
+      </column>
+      <column>
+       <property name="text">
+        <string>Data</string>
        </property>
       </column>
       <column>
        <property name="text">
-        <string>Diretório</string>
-       </property>
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Data </string>
-       </property>
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Ação</string>
-       </property>
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
+        <string>Ações</string>
        </property>
       </column>
      </widget>
@@ -649,7 +481,7 @@
      <attribute name="title">
       <string>Outros</string>
      </attribute>
-     <widget class="QTreeWidget" name="tabela_musicas_7">
+     <widget class="QTableWidget" name="tableWidget_7">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -662,55 +494,25 @@
        <property name="text">
         <string>Arquivo</string>
        </property>
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
+      </column>
+      <column>
+       <property name="text">
+        <string>New Column</string>
        </property>
       </column>
       <column>
        <property name="text">
         <string>Tamanho(MB)</string>
        </property>
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
+      </column>
+      <column>
+       <property name="text">
+        <string>Data</string>
        </property>
       </column>
       <column>
        <property name="text">
-        <string>Diretório</string>
-       </property>
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Data </string>
-       </property>
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Ação</string>
-       </property>
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
+        <string>Ações</string>
        </property>
       </column>
      </widget>
