@@ -58,7 +58,6 @@ class Main(QMainWindow, Ui_Main):
         self.tela_login.loginRegisterButton.clicked.connect(self.openLoginScreen)
         self.tela_cadastro.buttonRegister.clicked.connect(self.registerGetDatas)
         self.tela_login.loginButton.clicked.connect(self.loginUser)
-        self.tela_home.SearchButtom.clicked.connect(self.search)
         self.tela_home.uploadButton.clicked.connect(self.openUploadScreen)
         self.tela_upload.buttonCancelar.clicked.connect(self.backHomePage)
         self.tela_upload.buttonUpload.clicked.connect(self.selectFile)
@@ -148,7 +147,11 @@ class Main(QMainWindow, Ui_Main):
                     self.usuario.primaryName = response[1]
                     self.usuario.lastName = response[2]
                     self.usuario.email = response[3]
-                    print(self.usuario)
+                    
+                    
+                    # self.tela_home.loadData(b,self.tela_home.tableWidget)
+
+
                     self.homePageUser()
                 else:
                     QtWidgets.QMessageBox.about(None, "Ooops!", "e-mail e/oi usuario incorretos!")

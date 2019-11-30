@@ -12,24 +12,24 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_UserFilesScreen(object):
  
-    def loadData(self, lista):
-            self.tableWidget.setRowCount(0)
+    def loadData(self, lista, tabela):
+            tabela.setRowCount(0)
             self.buttons = []
             print(lista)
             self.infos = []
             for row_number in range(len(lista)):
-                self.tableWidget.insertRow(row_number)
-                self.tableWidget.setItem(row_number, 0, QtWidgets.QTableWidgetItem(lista[row_number][0]))
-                self.tableWidget.setItem(row_number, 1, QtWidgets.QTableWidgetItem(lista[row_number][1]))
-                self.tableWidget.setItem(row_number, 2, QtWidgets.QTableWidgetItem(str(lista[row_number][2])))
-                self.tableWidget.setItem(row_number, 3, QtWidgets.QTableWidgetItem(str(lista[row_number][3])))
+                tabela.insertRow(row_number)
+                tabela.setItem(row_number, 0, QtWidgets.QTableWidgetItem(lista[row_number][0]))
+                tabela.setItem(row_number, 1, QtWidgets.QTableWidgetItem(lista[row_number][1]))
+                tabela.setItem(row_number, 2, QtWidgets.QTableWidgetItem(str(lista[row_number][2])))
+                tabela.setItem(row_number, 3, QtWidgets.QTableWidgetItem(str(lista[row_number][3])))
                 self.infos.append(lista[row_number])
          
-                self.buttons.append(QtWidgets.QPushButton(self.tableWidget))
+                self.buttons.append(QtWidgets.QPushButton(tabela))
                 self.buttons[-1].setText("Baixar")
                 self.buttons[-1].setStyleSheet("background-color: #345995;\n"
                 "color: #FFFFFF;")
-                self.tableWidget.setCellWidget(row_number, 4, self.buttons[-1])
+                tabela.setCellWidget(row_number, 4, self.buttons[-1])
 
 
 
@@ -241,17 +241,6 @@ class Ui_UserFilesScreen(object):
         self.statusbar = QtWidgets.QStatusBar(UserFilesScreen)
         self.statusbar.setObjectName("statusbar")
         UserFilesScreen.setStatusBar(self.statusbar)
-
-        a = list()
-        a.append("AplicativoDEAlguma.py")
-        a.append("270")
-        a.append("12/12/12")
-        a.append("Documentos")
-
-        b = []
-
-        b.append(a)
-        self.loadData(b)
 
         self.retranslateUi(UserFilesScreen)
         self.tabWidget.setCurrentIndex(0)
