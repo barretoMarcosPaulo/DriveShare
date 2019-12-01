@@ -77,7 +77,6 @@ class ClientSide():
 
 
 	def request_files(self,user_id,type_file):
-		print("Enviando")
 		request = "get_files,"+type_file+","+user_id
 		self.client_socket.send(request.encode())
 		files = self.client_socket.recv(1024).decode()

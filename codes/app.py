@@ -79,6 +79,8 @@ class Main(QMainWindow, Ui_Main):
         send = send.replace(" ", "")
         if self.connection.sendDatas(send):
             self.connection.sendFile(self.path) 
+        QtWidgets.QMessageBox.about(None, "Ok!", "Upload Finalizado")
+        self.homePageUser()
             
 
     def openLoginScreen(self):
