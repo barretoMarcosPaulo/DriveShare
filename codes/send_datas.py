@@ -80,6 +80,26 @@ class ClientSide():
 		print("Enviando")
 		request = "get_files,"+type_file+","+user_id
 		self.client_socket.send(request.encode())
+		files = self.client_socket.recv(1024).decode()
+		files = files.split(";")
+
+		files.pop(0)
+
+		nova_lista = []
+
+		for i in range(len(files)):
+			files[i] = files[i].replace("]","")
+			files[i] = files[i].replace("'","")
+			nova_lista.append(files[i].split(","))
+
+
+
+		for x in range( len(nova_lista)):
+			nova_lista[x].pop(0)
+			print(nova_lista[x])
+
+					
+		
 
 
 	def closeConnection(self):

@@ -80,12 +80,6 @@ class Main(QMainWindow, Ui_Main):
         if self.connection.sendDatas(send):
             self.connection.sendFile(self.path) 
             
- 
-
-    def homePageUser(self):
-        self.QtStack.setCurrentIndex(2)
-        self.tela_home.label.setText(self.usuario.primaryName)
-
 
     def openLoginScreen(self):
         self.QtStack.setCurrentIndex(1)
@@ -137,7 +131,13 @@ class Main(QMainWindow, Ui_Main):
         videos = []
         musicas = []
         outros = []
+
         self.connection.request_files(self.usuario.id,"imagens")
+
+    def homePageUser(self):
+        self.QtStack.setCurrentIndex(2)
+        self.tela_home.label.setText(self.usuario.primaryName)
+        self.load_infos()
 
     def loginUser(self):
         user_email = self.tela_login.emailLogin.text()
@@ -156,12 +156,10 @@ class Main(QMainWindow, Ui_Main):
                     self.usuario.id = response[0]
                     self.usuario.primaryName = response[1]
                     self.usuario.lastName = response[2]
-                    self.usuario.email = response[3]
-                    
-                    
+                    self.usuario.email = response[3]                    
                     # self.tela_home.loadData(b,self.tela_home.tableWidget)
-                    # self.load_infos()
                     self.homePageUser()
+                    
 
                 else:
                     QtWidgets.QMessageBox.about(None, "Ooops!", "e-mail e/oi usuario incorretos!")
