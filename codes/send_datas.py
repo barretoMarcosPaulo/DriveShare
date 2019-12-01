@@ -96,10 +96,9 @@ class ClientSide():
 
 		for x in range( len(nova_lista)):
 			nova_lista[x].pop(0)
-			print(nova_lista[x])
 
-					
-		
+
+		return nova_lista	
 
 
 	def closeConnection(self):

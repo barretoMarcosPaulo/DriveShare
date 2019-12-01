@@ -19,10 +19,10 @@ class Ui_UserFilesScreen(object):
             self.infos = []
             for row_number in range(len(lista)):
                 tabela.insertRow(row_number)
-                tabela.setItem(row_number, 0, QtWidgets.QTableWidgetItem(lista[row_number][0]))
-                tabela.setItem(row_number, 1, QtWidgets.QTableWidgetItem(lista[row_number][1]))
-                tabela.setItem(row_number, 2, QtWidgets.QTableWidgetItem(str(lista[row_number][2])))
-                tabela.setItem(row_number, 3, QtWidgets.QTableWidgetItem(str(lista[row_number][3])))
+                tabela.setItem(row_number, 0, QtWidgets.QTableWidgetItem(lista[row_number][1]))
+                tabela.setItem(row_number, 1, QtWidgets.QTableWidgetItem(lista[row_number][2]))
+                tabela.setItem(row_number, 2, QtWidgets.QTableWidgetItem(str(lista[row_number][3])))
+                tabela.setItem(row_number, 3, QtWidgets.QTableWidgetItem(str(lista[row_number][4])))
                 self.infos.append(lista[row_number])
          
                 self.buttons.append(QtWidgets.QPushButton(tabela))

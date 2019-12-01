@@ -131,8 +131,24 @@ class Main(QMainWindow, Ui_Main):
         videos = []
         musicas = []
         outros = []
+        compart = []
 
-        self.connection.request_files(self.usuario.id,"imagens")
+        recentes = self.connection.request_files(self.usuario.id,"recentes")
+        documentos = self.connection.request_files(self.usuario.id,"documentos")
+        imagens = self.connection.request_files(self.usuario.id,"imagens")
+        videos = self.connection.request_files(self.usuario.id,"videos")
+        musicas = self.connection.request_files(self.usuario.id,"musicas")
+        outros = self.connection.request_files(self.usuario.id,"outros")
+        compart = self.connection.request_files(self.usuario.id,"compartilhados")
+
+   
+        self.tela_home.loadData(recentes,self.tela_home.tableWidget)
+        self.tela_home.loadData(documentos,self.tela_home.tableWidget_2)
+        self.tela_home.loadData(imagens,self.tela_home.tableWidget_3)
+        self.tela_home.loadData(videos,self.tela_home.tableWidget_4)
+        self.tela_home.loadData(musicas,self.tela_home.tableWidget_5)
+        self.tela_home.loadData(compart,self.tela_home.tableWidget_6)
+        self.tela_home.loadData(outros,self.tela_home.tableWidget_7)
 
     def homePageUser(self):
         self.QtStack.setCurrentIndex(2)
@@ -157,7 +173,6 @@ class Main(QMainWindow, Ui_Main):
                     self.usuario.primaryName = response[1]
                     self.usuario.lastName = response[2]
                     self.usuario.email = response[3]                    
-                    # self.tela_home.loadData(b,self.tela_home.tableWidget)
                     self.homePageUser()
                     
 
