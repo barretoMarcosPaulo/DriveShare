@@ -14,6 +14,7 @@ class Ui_Upload(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
         Form.resize(731, 480)
+        Form.setFixedSize(731, 480)
         self.label = QtWidgets.QLabel(Form)
         self.label.setGeometry(QtCore.QRect(60, 30, 331, 31))
         font = QtGui.QFont()

@@ -15,7 +15,6 @@ class Ui_UserFilesScreen(object):
     def loadData(self, lista, tabela):
             tabela.setRowCount(0)
             self.buttons = []
-            print(lista)
             self.infos = []
             for row_number in range(len(lista)):
                 tabela.insertRow(row_number)
@@ -23,17 +22,14 @@ class Ui_UserFilesScreen(object):
                 tabela.setItem(row_number, 1, QtWidgets.QTableWidgetItem(lista[row_number][2]))
                 tabela.setItem(row_number, 2, QtWidgets.QTableWidgetItem(str(lista[row_number][3])))
                 tabela.setItem(row_number, 3, QtWidgets.QTableWidgetItem(str(lista[row_number][4])))
+                tabela.setItem(row_number, 4, QtWidgets.QTableWidgetItem("Download"))
                 self.infos.append(lista[row_number])
          
-                self.buttons.append(QtWidgets.QPushButton(tabela))
-                self.buttons[-1].setText("Baixar")
-                self.buttons[-1].setStyleSheet("background-color: #345995;\n"
-                "color: #FFFFFF;")
-                tabela.setCellWidget(row_number, 4, self.buttons[-1])
 
     def setupUi(self, UserFilesScreen):
         UserFilesScreen.setObjectName("UserFilesScreen")
         UserFilesScreen.setWindowModality(QtCore.Qt.NonModal)
+        UserFilesScreen.setFixedSize(916, 615)
         UserFilesScreen.resize(916, 615)
         UserFilesScreen.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         UserFilesScreen.setStyleSheet("")

@@ -24,6 +24,7 @@ class Ui_Main(QtWidgets.QWidget):
         self.path = " "
         self.file_size = str()
         self.usuario = UserLogado()
+        self.download_in_progress = False
         self.QtStack = QtWidgets.QStackedLayout()
 
         self.stack0 = QtWidgets.QMainWindow()
@@ -62,6 +63,24 @@ class Main(QMainWindow, Ui_Main):
         self.tela_upload.buttonCancelar.clicked.connect(self.backHomePage)
         self.tela_upload.buttonUpload.clicked.connect(self.selectFile)
         self.tela_upload.buttonEnviar.clicked.connect(self.sendFile)
+        
+        self.tela_home.tableWidget.cellClicked.connect(self.selectRecentes)
+
+    import time
+
+    def selectRecentes(self):
+
+        row = self.tela_home.tableWidget.currentRow()
+        col = self.tela_home.tableWidget.currentColumn()
+        if col == 4:
+            if not self.download_in_progress:
+                QtWidgets.QMessageBox.about(None, "Ok!", "Download iniciado, aguarde ate o final.")
+                self.download_in_progress = True
+                
+
+            else:
+                 QtWidgets.QMessageBox.about(None, "Calma!", "Aguarde o termino do download atual.")
+
 
 
     def selectFile(self):

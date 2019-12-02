@@ -41,7 +41,7 @@ class ClientSide():
 		# Return error/success and message
 		
 		resposta = self.client_socket.recv(1024).decode()
-		print(resposta)
+		
 		if resposta == "error":
 			return False
 		if resposta == "ok":

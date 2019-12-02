@@ -6,6 +6,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Register_Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
+        Dialog.setFixedSize(640, 480)
         Dialog.resize(640, 480)
         self.label = QtWidgets.QLabel(Dialog)
         self.label.setGeometry(QtCore.QRect(60, 440, 131, 21))
