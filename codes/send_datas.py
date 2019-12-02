@@ -55,7 +55,29 @@ class ClientSide():
 			resposta=resposta.split(",")
 			return True,resposta
 
+	def request_download(self,path,name):
 
+
+
+		self.client_socket.send(path.encode())
+		destination ="/home/marcos/drive_downloads/"+name
+
+		f = open(destination,'wb')
+
+                                                    
+		while True:
+			l = self.client_socket.recv(1024)
+            
+			while "done" not in str(l):
+				print(l)
+				print("Download")
+				f.write(l)
+				
+				l = self.client_socket.recv(1024)
+
+			f.close()
+			print("Concluido")
+			break
 	
 	def sendFile(self, path):
 

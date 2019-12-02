@@ -14,6 +14,8 @@ import os
 from PyQt5.QtCore import pyqtSlot
 from userlogado import *
 import time
+from functools import partial
+
 
 class Ui_Main(QtWidgets.QWidget): 
     def setupUi(self, Main):
@@ -22,6 +24,7 @@ class Ui_Main(QtWidgets.QWidget):
 
         self.connection = ClientSide()
         self.path = " "
+        self.download_destination = " "
         self.file_size = str()
         self.usuario = UserLogado()
         self.download_in_progress = False
@@ -64,22 +67,59 @@ class Main(QMainWindow, Ui_Main):
         self.tela_upload.buttonUpload.clicked.connect(self.selectFile)
         self.tela_upload.buttonEnviar.clicked.connect(self.sendFile)
         
-        self.tela_home.tableWidget.cellClicked.connect(self.selectRecentes)
+        self.tela_home.tableWidget.cellClicked.connect(      partial(self.selectFileDownload , self.tela_home.tableWidget, self.tela_home.escolher_destino))
+        self.tela_home.tableWidget_2.cellClicked.connect(    partial(self.selectFileDownload , self.tela_home.tableWidget_2, self.tela_home.escolher_destino_2))
+        self.tela_home.tableWidget_3.cellClicked.connect(    partial(self.selectFileDownload , self.tela_home.tableWidget_3, self.tela_home.escolher_destino_3))
+        self.tela_home.tableWidget_4.cellClicked.connect(    partial(self.selectFileDownload ,self.tela_home.tableWidget_4, self.tela_home.escolher_destino_4))
+        self.tela_home.tableWidget_5.cellClicked.connect(    partial(self.selectFileDownload , self.tela_home.tableWidget_5, self.tela_home.escolher_destino_5))
+        self.tela_home.tableWidget_6.cellClicked.connect(    partial(self.selectFileDownload , self.tela_home.tableWidget_6, self.tela_home.escolher_destino_6))
+        self.tela_home.tableWidget_7.cellClicked.connect(    partial(self.selectFileDownload , self.tela_home.tableWidget_7, self.tela_home.escolher_destino_7))
+        
+        # self.tela_home.salvar_arquivo.clicked.connect(self.get_destination_download)
+        
 
-    import time
+        self.tela_home.cancelar.clicked.connect(  partial(self.cancel_download ,self.tela_home.tableWidget , self.tela_home.escolher_destino))
+        self.tela_home.cancelar_2.clicked.connect(partial(self.cancel_download ,self.tela_home.tableWidget_2 , self.tela_home.escolher_destino_2))
+        self.tela_home.cancelar_3.clicked.connect(partial(self.cancel_download ,self.tela_home.tableWidget_3 , self.tela_home.escolher_destino_3))
+        self.tela_home.cancelar_5.clicked.connect(partial(self.cancel_download ,self.tela_home.tableWidget_4 , self.tela_home.escolher_destino_4))
+        self.tela_home.cancelar_6.clicked.connect(partial(self.cancel_download ,self.tela_home.tableWidget_5 , self.tela_home.escolher_destino_5))
+        self.tela_home.cancelar_7.clicked.connect(partial(self.cancel_download ,self.tela_home.tableWidget_6 , self.tela_home.escolher_destino_6))
+        self.tela_home.cancelar_8.clicked.connect(partial(self.cancel_download ,self.tela_home.tableWidget_7 , self.tela_home.escolher_destino_7))
 
-    def selectRecentes(self):
 
-        row = self.tela_home.tableWidget.currentRow()
-        col = self.tela_home.tableWidget.currentColumn()
+    def cancel_download(self,tabela,janela):
+        tabela.show()
+        janela.hide()
+
+    def selectFileDownload(self,tabela,janela):
+
+        row = tabela.currentRow()
+        col = tabela.currentColumn()
+        remote_file = str()
+
         if col == 4:
-            if not self.download_in_progress:
-                QtWidgets.QMessageBox.about(None, "Ok!", "Download iniciado, aguarde ate o final.")
-                self.download_in_progress = True
-                
 
-            else:
-                 QtWidgets.QMessageBox.about(None, "Calma!", "Aguarde o termino do download atual.")
+            janela.show()
+            tabela.hide()
+
+            # if not self.download_in_progress:
+                                
+            #     file = tabela.item(row, 0).text()
+            #     path = tabela.item(row, 1).text()
+                
+            #     QtWidgets.QMessageBox.about(None, "Ok!", "Download do arquivo {} iniciado, aguarde ate o final.".format(file))
+    
+            #     remote_file+=self.usuario.email+"/"+path+"/"+file
+            #     remote_file = remote_file.replace(" ","")
+
+            #     request = "download,"+remote_file
+
+            #     self.connection.request_download(request,file)
+
+            #     self.download_in_progress = False
+                
+            # else:
+            #      QtWidgets.QMessageBox.about(None, "Calma!", "Aguarde o termino do download atual.")
 
 
 
