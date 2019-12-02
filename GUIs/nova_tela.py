@@ -13,22 +13,17 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_UserFilesScreen(object):
 
 
-    def __init__(self):
-        
-        self.ids_files = {}
-
     def loadData(self, lista, tabela):
         tabela.setRowCount(0)
         self.buttons = []
         self.infos = []
         for row_number in range(len(lista)):
-            self.ids_files[lista[ row_number][1] ] = lista[row_number][0]
             tabela.insertRow(row_number)
             tabela.setItem(row_number, 0, QtWidgets.QTableWidgetItem(lista[row_number][1]))
             tabela.setItem(row_number, 1, QtWidgets.QTableWidgetItem(lista[row_number][2]))
             tabela.setItem(row_number, 2, QtWidgets.QTableWidgetItem(str(lista[row_number][3])))
             tabela.setItem(row_number, 3, QtWidgets.QTableWidgetItem(str(lista[row_number][4])))
-            tabela.setItem(row_number, 4, QtWidgets.QTableWidgetItem("Download/Compartilhar"))
+            tabela.setItem(row_number, 4, QtWidgets.QTableWidgetItem("Download"))
             self.infos.append(lista[row_number])
 
     def setupUi(self, UserFilesScreen):
@@ -93,7 +88,7 @@ class Ui_UserFilesScreen(object):
         self.foto_perfil.setGeometry(QtCore.QRect(820, 10, 54, 41))
         self.foto_perfil.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.foto_perfil.setText("")
-        self.foto_perfil.setPixmap(QtGui.QPixmap("person.png"))
+        self.foto_perfil.setPixmap(QtGui.QPixmap("imagesQT/person.png"))
         self.foto_perfil.setObjectName("foto_perfil")
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(800, 50, 101, 21))
@@ -131,8 +126,6 @@ class Ui_UserFilesScreen(object):
         self.escolher_destino.setStyleSheet("background-color: #f1f2f3f4;\n"
 "")
         self.escolher_destino.setObjectName("escolher_destino")
-        self.escolher_destino.hide()
-
         self.salvar_arquivo = QtWidgets.QPushButton(self.escolher_destino)
         self.salvar_arquivo.setGeometry(QtCore.QRect(300, 70, 90, 28))
         self.salvar_arquivo.setObjectName("salvar_arquivo")
@@ -153,7 +146,6 @@ class Ui_UserFilesScreen(object):
         self.enviar.setStyleSheet("background-color: #f1f2f3f4;\n"
 "")
         self.enviar.setObjectName("enviar")
-        self.enviar.hide()
         self.salvar_arquivo_11 = QtWidgets.QPushButton(self.enviar)
         self.salvar_arquivo_11.setGeometry(QtCore.QRect(300, 70, 90, 28))
         self.salvar_arquivo_11.setObjectName("salvar_arquivo_11")
@@ -186,8 +178,6 @@ class Ui_UserFilesScreen(object):
         self.escolher_destino_2.setStyleSheet("background-color: #f1f2f3f4;\n"
 "")
         self.escolher_destino_2.setObjectName("escolher_destino_2")
-        self.escolher_destino_2.hide()
-
         self.salvar_arquivo_2 = QtWidgets.QPushButton(self.escolher_destino_2)
         self.salvar_arquivo_2.setGeometry(QtCore.QRect(300, 70, 90, 28))
         self.salvar_arquivo_2.setObjectName("salvar_arquivo_2")
@@ -208,7 +198,6 @@ class Ui_UserFilesScreen(object):
         self.enviar_2.setStyleSheet("background-color: #f1f2f3f4;\n"
 "")
         self.enviar_2.setObjectName("enviar_2")
-        self.enviar_2.hide()
         self.salvar_arquivo_12 = QtWidgets.QPushButton(self.enviar_2)
         self.salvar_arquivo_12.setGeometry(QtCore.QRect(300, 70, 90, 28))
         self.salvar_arquivo_12.setObjectName("salvar_arquivo_12")
@@ -241,8 +230,6 @@ class Ui_UserFilesScreen(object):
         self.escolher_destino_3.setStyleSheet("background-color: #f1f2f3f4;\n"
 "")
         self.escolher_destino_3.setObjectName("escolher_destino_3")
-        self.escolher_destino_3.hide()
-
         self.salvar_arquivo_3 = QtWidgets.QPushButton(self.escolher_destino_3)
         self.salvar_arquivo_3.setGeometry(QtCore.QRect(300, 70, 90, 28))
         self.salvar_arquivo_3.setObjectName("salvar_arquivo_3")
@@ -263,7 +250,6 @@ class Ui_UserFilesScreen(object):
         self.enviar_3.setStyleSheet("background-color: #f1f2f3f4;\n"
 "")
         self.enviar_3.setObjectName("enviar_3")
-        self.enviar_3.hide()
         self.salvar_arquivo_13 = QtWidgets.QPushButton(self.enviar_3)
         self.salvar_arquivo_13.setGeometry(QtCore.QRect(300, 70, 90, 28))
         self.salvar_arquivo_13.setObjectName("salvar_arquivo_13")
@@ -296,8 +282,6 @@ class Ui_UserFilesScreen(object):
         self.escolher_destino_4.setStyleSheet("background-color: #f1f2f3f4;\n"
 "")
         self.escolher_destino_4.setObjectName("escolher_destino_4")
-        self.escolher_destino_4.hide()
-
         self.salvar_arquivo_5 = QtWidgets.QPushButton(self.escolher_destino_4)
         self.salvar_arquivo_5.setGeometry(QtCore.QRect(300, 70, 90, 28))
         self.salvar_arquivo_5.setObjectName("salvar_arquivo_5")
@@ -318,7 +302,6 @@ class Ui_UserFilesScreen(object):
         self.enviar_4.setStyleSheet("background-color: #f1f2f3f4;\n"
 "")
         self.enviar_4.setObjectName("enviar_4")
-        self.enviar_4.hide()
         self.salvar_arquivo_14 = QtWidgets.QPushButton(self.enviar_4)
         self.salvar_arquivo_14.setGeometry(QtCore.QRect(300, 70, 90, 28))
         self.salvar_arquivo_14.setObjectName("salvar_arquivo_14")
@@ -351,8 +334,6 @@ class Ui_UserFilesScreen(object):
         self.escolher_destino_5.setStyleSheet("background-color: #f1f2f3f4;\n"
 "")
         self.escolher_destino_5.setObjectName("escolher_destino_5")
-        self.escolher_destino_5.hide()
-
         self.salvar_arquivo_6 = QtWidgets.QPushButton(self.escolher_destino_5)
         self.salvar_arquivo_6.setGeometry(QtCore.QRect(300, 70, 90, 28))
         self.salvar_arquivo_6.setObjectName("salvar_arquivo_6")
@@ -373,7 +354,6 @@ class Ui_UserFilesScreen(object):
         self.enviar_5.setStyleSheet("background-color: #f1f2f3f4;\n"
 "")
         self.enviar_5.setObjectName("enviar_5")
-        self.enviar_5.hide()
         self.salvar_arquivo_16 = QtWidgets.QPushButton(self.enviar_5)
         self.salvar_arquivo_16.setGeometry(QtCore.QRect(300, 70, 90, 28))
         self.salvar_arquivo_16.setObjectName("salvar_arquivo_16")
@@ -406,8 +386,6 @@ class Ui_UserFilesScreen(object):
         self.escolher_destino_6.setStyleSheet("background-color: #f1f2f3f4;\n"
 "")
         self.escolher_destino_6.setObjectName("escolher_destino_6")
-        self.escolher_destino_6.hide()
-
         self.salvar_arquivo_7 = QtWidgets.QPushButton(self.escolher_destino_6)
         self.salvar_arquivo_7.setGeometry(QtCore.QRect(300, 70, 90, 28))
         self.salvar_arquivo_7.setObjectName("salvar_arquivo_7")
@@ -440,8 +418,6 @@ class Ui_UserFilesScreen(object):
         self.escolher_destino_7.setStyleSheet("background-color: #f1f2f3f4;\n"
 "")
         self.escolher_destino_7.setObjectName("escolher_destino_7")
-        self.escolher_destino_7.hide()
-
         self.salvar_arquivo_8 = QtWidgets.QPushButton(self.escolher_destino_7)
         self.salvar_arquivo_8.setGeometry(QtCore.QRect(300, 70, 90, 28))
         self.salvar_arquivo_8.setObjectName("salvar_arquivo_8")
@@ -462,8 +438,6 @@ class Ui_UserFilesScreen(object):
         self.enviar_6.setStyleSheet("background-color: #f1f2f3f4;\n"
 "")
         self.enviar_6.setObjectName("enviar_6")
-        self.enviar_6.hide()
-
         self.salvar_arquivo_19 = QtWidgets.QPushButton(self.enviar_6)
         self.salvar_arquivo_19.setGeometry(QtCore.QRect(300, 70, 90, 28))
         self.salvar_arquivo_19.setObjectName("salvar_arquivo_19")
@@ -619,6 +593,8 @@ class Ui_UserFilesScreen(object):
         self.salvar_arquivo_19.setText(_translate("UserFilesScreen", "Enviar"))
         self.cancelar_19.setText(_translate("UserFilesScreen", "Cancelar"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_6), _translate("UserFilesScreen", "Outros"))
+import imageLogo_rc
+import logo_user_rc
 
 
 if __name__ == "__main__":

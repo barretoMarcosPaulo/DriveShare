@@ -53,14 +53,14 @@ class ClientSide():
 			resposta = resposta.replace("','","")
 			resposta = resposta.replace("'","")
 			resposta=resposta.split(",")
-			return True,resposta
+			return resposta
 
 	def request_download(self,path,name,destination):
 
 
 
 		self.client_socket.send(path.encode())
-		destination +="/"+name
+		destination ="/"+name
 
 		f = open(destination,'wb')
 

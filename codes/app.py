@@ -92,6 +92,57 @@ class Main(QMainWindow, Ui_Main):
         self.tela_home.cancelar_7.clicked.connect(partial(self.cancel_download ,self.tela_home.tableWidget_6 , self.tela_home.escolher_destino_6))
         self.tela_home.cancelar_8.clicked.connect(partial(self.cancel_download ,self.tela_home.tableWidget_7 , self.tela_home.escolher_destino_7))
 
+
+        self.tela_home.btn_comp_6.clicked.connect( partial(self.show_shared , self.tela_home.tableWidget   , self.tela_home.enviar))
+        self.tela_home.btn_comp_5.clicked.connect( partial(self.show_shared , self.tela_home.tableWidget_2 , self.tela_home.enviar_2))
+        self.tela_home.btn_comp_4.clicked.connect( partial(self.show_shared , self.tela_home.tableWidget_3 , self.tela_home.enviar_3))
+        self.tela_home.btn_comp_3.clicked.connect( partial(self.show_shared , self.tela_home.tableWidget_4 , self.tela_home.enviar_4))
+        self.tela_home.btn_comp_2.clicked.connect( partial(self.show_shared , self.tela_home.tableWidget_5 , self.tela_home.enviar_5))
+        self.tela_home.btn_comp.clicked.connect(   partial(self.show_shared,  self.tela_home.tableWidget_7 , self.tela_home.enviar_6))
+
+        self.tela_home.cancelar_11.clicked.connect( partial(self.cancel_shared , self.tela_home.enviar))
+        self.tela_home.cancelar_12.clicked.connect( partial(self.cancel_shared , self.tela_home.enviar_2))
+        self.tela_home.cancelar_13.clicked.connect( partial(self.cancel_shared , self.tela_home.enviar_3))
+        self.tela_home.cancelar_14.clicked.connect( partial(self.cancel_shared , self.tela_home.enviar_4))
+        self.tela_home.cancelar_16.clicked.connect( partial(self.cancel_shared , self.tela_home.enviar_5))
+        self.tela_home.cancelar_19.clicked.connect(   partial(self.cancel_shared,  self.tela_home.enviar_6))
+
+        self.tela_home.salvar_arquivo_11.clicked.connect( partial(self.make_shared , self.tela_home.enviar, self.tela_home.caminho_11    , self.tela_home.tableWidget))
+        self.tela_home.salvar_arquivo_12.clicked.connect( partial(self.make_shared , self.tela_home.enviar_2, self.tela_home.caminho_12  , self.tela_home.tableWidget_2))
+        self.tela_home.salvar_arquivo_13.clicked.connect( partial(self.make_shared , self.tela_home.enviar_3, self.tela_home.caminho_13  , self.tela_home.tableWidget_3))
+        self.tela_home.salvar_arquivo_14.clicked.connect( partial(self.make_shared , self.tela_home.enviar_4, self.tela_home.caminho_14  , self.tela_home.tableWidget_4))
+        self.tela_home.salvar_arquivo_16.clicked.connect( partial(self.make_shared , self.tela_home.enviar_5, self.tela_home.caminho_16  ,self.tela_home.tableWidget_5))
+        self.tela_home.salvar_arquivo_19.clicked.connect(   partial(self.make_shared,  self.tela_home.enviar_6, self.tela_home.caminho_19 , self.tela_home.tableWidget_7))
+
+
+    def make_shared(self,janela,input_email, tabela):
+        
+        email_send = input_email.text()
+
+        if "@" in email_send:
+            send = "verifica_usuario,"+email_send
+            
+            user = self.connection.sendDatas(send)
+            
+            if user!=False:
+                
+                id_user_destination = user[0].replace("(","")
+                id_user_origem = self.usuario.id
+
+                print(id_user_origem , id_user_destination)
+                print(self.tela_home.ids_files)
+                
+            else:
+                QtWidgets.QMessageBox.about(None, "Ooops!", "Nenhum usuario registrado com esse email")    
+        else:
+            QtWidgets.QMessageBox.about(None, "Ooops!", "Endereço de email invalido")
+
+    def show_shared(self,tela , janela ):
+        janela.show()
+
+    def cancel_shared(self,janela):
+        janela.hide()
+
     def get_destination_download(self ,tabela,janela):
         
         row = tabela.currentRow()
@@ -246,9 +297,9 @@ class Main(QMainWindow, Ui_Main):
             else:
                 datas_form_login+=user_email+","+user_pass
                 
-                status,response = self.connection.sendDatas(datas_form_login)
+                response = self.connection.sendDatas(datas_form_login)
 
-                if status:
+                if response != False:
                     self.usuario.id = response[0]
                     self.usuario.primaryName = response[1]
                     self.usuario.lastName = response[2]

@@ -223,7 +223,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -276,6 +276,59 @@
        </property>
       </column>
      </widget>
+     <widget class="QGroupBox" name="escolher_destino">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>110</y>
+        <width>531</width>
+        <height>151</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #f1f2f3f4;
+</string>
+      </property>
+      <property name="title">
+       <string>Escolha um local para salvar o arquivo</string>
+      </property>
+      <widget class="QPushButton" name="salvar_arquivo">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>70</y>
+         <width>90</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Salvar</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="caminho">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>70</y>
+         <width>271</width>
+         <height>28</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="cancelar">
+       <property name="geometry">
+        <rect>
+         <x>400</x>
+         <y>70</y>
+         <width>91</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Cancelar</string>
+       </property>
+      </widget>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_2">
      <attribute name="title">
@@ -316,6 +369,59 @@
        </property>
       </column>
      </widget>
+     <widget class="QGroupBox" name="escolher_destino_2">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>100</y>
+        <width>531</width>
+        <height>151</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #f1f2f3f4;
+</string>
+      </property>
+      <property name="title">
+       <string>Escolha um local para salvar o arquivo</string>
+      </property>
+      <widget class="QPushButton" name="salvar_arquivo_2">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>70</y>
+         <width>90</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Salvar</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="caminho_2">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>70</y>
+         <width>271</width>
+         <height>28</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="cancelar_2">
+       <property name="geometry">
+        <rect>
+         <x>400</x>
+         <y>70</y>
+         <width>91</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Cancelar</string>
+       </property>
+      </widget>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_3">
      <attribute name="title">
@@ -355,6 +461,59 @@
         <string>Ações</string>
        </property>
       </column>
+     </widget>
+     <widget class="QGroupBox" name="escolher_destino_3">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>110</y>
+        <width>531</width>
+        <height>151</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #f1f2f3f4;
+</string>
+      </property>
+      <property name="title">
+       <string>Escolha um local para salvar o arquivo</string>
+      </property>
+      <widget class="QPushButton" name="salvar_arquivo_3">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>70</y>
+         <width>90</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Salvar</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="caminho_3">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>70</y>
+         <width>271</width>
+         <height>28</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="cancelar_3">
+       <property name="geometry">
+        <rect>
+         <x>400</x>
+         <y>70</y>
+         <width>91</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Cancelar</string>
+       </property>
+      </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="tab_4">
