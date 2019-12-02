@@ -67,15 +67,21 @@ class Main(QMainWindow, Ui_Main):
         self.tela_upload.buttonUpload.clicked.connect(self.selectFile)
         self.tela_upload.buttonEnviar.clicked.connect(self.sendFile)
         
-        self.tela_home.tableWidget.cellClicked.connect(      partial(self.selectFileDownload , self.tela_home.tableWidget, self.tela_home.escolher_destino))
-        self.tela_home.tableWidget_2.cellClicked.connect(    partial(self.selectFileDownload , self.tela_home.tableWidget_2, self.tela_home.escolher_destino_2))
-        self.tela_home.tableWidget_3.cellClicked.connect(    partial(self.selectFileDownload , self.tela_home.tableWidget_3, self.tela_home.escolher_destino_3))
-        self.tela_home.tableWidget_4.cellClicked.connect(    partial(self.selectFileDownload ,self.tela_home.tableWidget_4, self.tela_home.escolher_destino_4))
-        self.tela_home.tableWidget_5.cellClicked.connect(    partial(self.selectFileDownload , self.tela_home.tableWidget_5, self.tela_home.escolher_destino_5))
-        self.tela_home.tableWidget_6.cellClicked.connect(    partial(self.selectFileDownload , self.tela_home.tableWidget_6, self.tela_home.escolher_destino_6))
-        self.tela_home.tableWidget_7.cellClicked.connect(    partial(self.selectFileDownload , self.tela_home.tableWidget_7, self.tela_home.escolher_destino_7))
+        self.tela_home.tableWidget.cellClicked.connect(      partial(self.get_destination_download , self.tela_home.tableWidget, self.tela_home.escolher_destino))
+        self.tela_home.tableWidget_2.cellClicked.connect(    partial(self.get_destination_download , self.tela_home.tableWidget_2, self.tela_home.escolher_destino_2))
+        self.tela_home.tableWidget_3.cellClicked.connect(    partial(self.get_destination_download , self.tela_home.tableWidget_3, self.tela_home.escolher_destino_3))
+        self.tela_home.tableWidget_4.cellClicked.connect(    partial(self.get_destination_download ,self.tela_home.tableWidget_4, self.tela_home.escolher_destino_4))
+        self.tela_home.tableWidget_5.cellClicked.connect(    partial(self.get_destination_download , self.tela_home.tableWidget_5, self.tela_home.escolher_destino_5))
+        self.tela_home.tableWidget_6.cellClicked.connect(    partial(self.get_destination_download , self.tela_home.tableWidget_6, self.tela_home.escolher_destino_6))
+        self.tela_home.tableWidget_7.cellClicked.connect(    partial(self.get_destination_download , self.tela_home.tableWidget_7, self.tela_home.escolher_destino_7))
         
-        # self.tela_home.salvar_arquivo.clicked.connect(self.get_destination_download)
+        self.tela_home.salvar_arquivo.clicked.connect( partial(self.selectFileDownload, self.tela_home.tableWidget, self.tela_home.escolher_destino , self.tela_home.caminho))
+        self.tela_home.salvar_arquivo_2.clicked.connect( partial(self.selectFileDownload, self.tela_home.tableWidget_2, self.tela_home.escolher_destino_2 , self.tela_home.caminho_2))
+        self.tela_home.salvar_arquivo_3.clicked.connect( partial(self.selectFileDownload, self.tela_home.tableWidget_3, self.tela_home.escolher_destino_3 , self.tela_home.caminho_3))
+        self.tela_home.salvar_arquivo_5.clicked.connect( partial(self.selectFileDownload, self.tela_home.tableWidget_4, self.tela_home.escolher_destino_4 , self.tela_home.caminho_5))
+        self.tela_home.salvar_arquivo_6.clicked.connect( partial(self.selectFileDownload, self.tela_home.tableWidget_5, self.tela_home.escolher_destino_5 , self.tela_home.caminho_6))
+        self.tela_home.salvar_arquivo_7.clicked.connect( partial(self.selectFileDownload, self.tela_home.tableWidget_6, self.tela_home.escolher_destino_6 , self.tela_home.caminho_7))
+        self.tela_home.salvar_arquivo_8.clicked.connect( partial(self.selectFileDownload, self.tela_home.tableWidget_7, self.tela_home.escolher_destino_7 , self.tela_home.caminho_8))
         
 
         self.tela_home.cancelar.clicked.connect(  partial(self.cancel_download ,self.tela_home.tableWidget , self.tela_home.escolher_destino))
@@ -86,41 +92,54 @@ class Main(QMainWindow, Ui_Main):
         self.tela_home.cancelar_7.clicked.connect(partial(self.cancel_download ,self.tela_home.tableWidget_6 , self.tela_home.escolher_destino_6))
         self.tela_home.cancelar_8.clicked.connect(partial(self.cancel_download ,self.tela_home.tableWidget_7 , self.tela_home.escolher_destino_7))
 
-
-    def cancel_download(self,tabela,janela):
-        tabela.show()
-        janela.hide()
-
-    def selectFileDownload(self,tabela,janela):
-
+    def get_destination_download(self ,tabela,janela):
+        
         row = tabela.currentRow()
         col = tabela.currentColumn()
-        remote_file = str()
 
         if col == 4:
-
             janela.show()
+
+    def cancel_download(self,tabela,janela):
+        janela.hide()
+
+    def selectFileDownload(self,tabela,janela, input_path):
+
+        remote_file = str()
+        destination = input_path.text()
+
+        if os.path.exists(destination):
+
+            row = tabela.currentRow()
+            col = tabela.currentColumn()
+                            
+            file = tabela.item(row, 0).text()
+            path = tabela.item(row, 1).text()
+            
             tabela.hide()
+            QtWidgets.QMessageBox.about(None, "Ok!", "Download do arquivo {} iniciado, aguarde ate o final.".format(file))
 
-            # if not self.download_in_progress:
-                                
-            #     file = tabela.item(row, 0).text()
-            #     path = tabela.item(row, 1).text()
-                
-            #     QtWidgets.QMessageBox.about(None, "Ok!", "Download do arquivo {} iniciado, aguarde ate o final.".format(file))
-    
-            #     remote_file+=self.usuario.email+"/"+path+"/"+file
-            #     remote_file = remote_file.replace(" ","")
+            remote_file+=self.usuario.email+"/"+path+"/"+file
+            remote_file = remote_file.replace(" ","")
 
-            #     request = "download,"+remote_file
+            request = "download,"+remote_file
 
-            #     self.connection.request_download(request,file)
+            self.connection.request_download(request,file,destination)
 
-            #     self.download_in_progress = False
-                
-            # else:
-            #      QtWidgets.QMessageBox.about(None, "Calma!", "Aguarde o termino do download atual.")
+            QtWidgets.QMessageBox.about(None, "Concluido!", "{} salvo em {}".format(file,destination))
+            tabela.show()
 
+            input_path.setText("")
+            janela.hide()
+
+        else:
+
+            QtWidgets.QMessageBox.about(None, "Erro!", "O destino informado [{}] nao existe".format(destination))
+            input_path.setText("")
+
+
+
+            
 
 
     def selectFile(self):

@@ -55,12 +55,12 @@ class ClientSide():
 			resposta=resposta.split(",")
 			return True,resposta
 
-	def request_download(self,path,name):
+	def request_download(self,path,name,destination):
 
 
 
 		self.client_socket.send(path.encode())
-		destination ="/home/marcos/drive_downloads/"+name
+		destination +="/"+name
 
 		f = open(destination,'wb')
 
