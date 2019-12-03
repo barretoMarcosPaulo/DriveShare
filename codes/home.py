@@ -31,6 +31,21 @@ class Ui_UserFilesScreen(object):
             tabela.setItem(row_number, 4, QtWidgets.QTableWidgetItem("Download/Compartilhar"))
             self.infos.append(lista[row_number])
 
+    def loadDataCompart(self,lista,tabela):
+
+        tabela.setRowCount(0)
+        self.buttons = []
+        self.infos = []
+        for row_number in range(len(lista)):
+            self.ids_files[lista[ row_number][1] ] = lista[row_number][0]
+            tabela.insertRow(row_number)
+            tabela.setItem(row_number, 0, QtWidgets.QTableWidgetItem(lista[row_number][0]))
+            tabela.setItem(row_number, 1, QtWidgets.QTableWidgetItem(lista[row_number][1]))
+            tabela.setItem(row_number, 2, QtWidgets.QTableWidgetItem(str(lista[row_number][2])))
+            tabela.setItem(row_number, 3, QtWidgets.QTableWidgetItem(str(lista[row_number][3])))
+            tabela.setItem(row_number, 4, QtWidgets.QTableWidgetItem("Download/Compartilhar"))
+            self.infos.append(lista[row_number])
+
     def setupUi(self, UserFilesScreen):
         UserFilesScreen.setObjectName("UserFilesScreen")
         UserFilesScreen.setWindowModality(QtCore.Qt.NonModal)
@@ -587,13 +602,13 @@ class Ui_UserFilesScreen(object):
         self.cancelar_16.setText(_translate("UserFilesScreen", "Cancelar"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_5), _translate("UserFilesScreen", "Músicas"))
         item = self.tableWidget_6.horizontalHeaderItem(0)
-        item.setText(_translate("UserFilesScreen", "Arquivo"))
+        item.setText(_translate("UserFilesScreen", "Origem"))
         item = self.tableWidget_6.horizontalHeaderItem(1)
-        item.setText(_translate("UserFilesScreen", "Diretório"))
+        item.setText(_translate("UserFilesScreen", "E-mail"))
         item = self.tableWidget_6.horizontalHeaderItem(2)
-        item.setText(_translate("UserFilesScreen", "Tamanho(B)"))
+        item.setText(_translate("UserFilesScreen", "Arquivo"))
         item = self.tableWidget_6.horizontalHeaderItem(3)
-        item.setText(_translate("UserFilesScreen", "Data"))
+        item.setText(_translate("UserFilesScreen", "Tipo"))
         item = self.tableWidget_6.horizontalHeaderItem(4)
         item.setText(_translate("UserFilesScreen", "Ações"))
         self.escolher_destino_6.setTitle(_translate("UserFilesScreen", "Escolha um local para salvar o arquivo"))
@@ -601,7 +616,7 @@ class Ui_UserFilesScreen(object):
         self.cancelar_7.setText(_translate("UserFilesScreen", "Cancelar"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_7), _translate("UserFilesScreen", "Compartilhados"))
         item = self.tableWidget_7.horizontalHeaderItem(0)
-        item.setText(_translate("UserFilesScreen", "Arquivo"))
+        item.setText(_translate("UserFilesScreen", "destinatário"))
         item = self.tableWidget_7.horizontalHeaderItem(1)
         item.setText(_translate("UserFilesScreen", "Diretório"))
         item = self.tableWidget_7.horizontalHeaderItem(2)

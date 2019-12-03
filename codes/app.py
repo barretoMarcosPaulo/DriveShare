@@ -75,13 +75,13 @@ class Main(QMainWindow, Ui_Main):
         self.tela_home.tableWidget_6.cellClicked.connect(    partial(self.get_destination_download , self.tela_home.tableWidget_6, self.tela_home.escolher_destino_6))
         self.tela_home.tableWidget_7.cellClicked.connect(    partial(self.get_destination_download , self.tela_home.tableWidget_7, self.tela_home.escolher_destino_7))
         
-        self.tela_home.salvar_arquivo.clicked.connect( partial(self.selectFileDownload, self.tela_home.tableWidget, self.tela_home.escolher_destino , self.tela_home.caminho))
-        self.tela_home.salvar_arquivo_2.clicked.connect( partial(self.selectFileDownload, self.tela_home.tableWidget_2, self.tela_home.escolher_destino_2 , self.tela_home.caminho_2))
-        self.tela_home.salvar_arquivo_3.clicked.connect( partial(self.selectFileDownload, self.tela_home.tableWidget_3, self.tela_home.escolher_destino_3 , self.tela_home.caminho_3))
-        self.tela_home.salvar_arquivo_5.clicked.connect( partial(self.selectFileDownload, self.tela_home.tableWidget_4, self.tela_home.escolher_destino_4 , self.tela_home.caminho_5))
-        self.tela_home.salvar_arquivo_6.clicked.connect( partial(self.selectFileDownload, self.tela_home.tableWidget_5, self.tela_home.escolher_destino_5 , self.tela_home.caminho_6))
-        self.tela_home.salvar_arquivo_7.clicked.connect( partial(self.selectFileDownload, self.tela_home.tableWidget_6, self.tela_home.escolher_destino_6 , self.tela_home.caminho_7))
-        self.tela_home.salvar_arquivo_8.clicked.connect( partial(self.selectFileDownload, self.tela_home.tableWidget_7, self.tela_home.escolher_destino_7 , self.tela_home.caminho_8))
+        self.tela_home.salvar_arquivo.clicked.connect( partial(self.selectFileDownload, self.tela_home.tableWidget, self.tela_home.escolher_destino , self.tela_home.caminho, False))
+        self.tela_home.salvar_arquivo_2.clicked.connect( partial(self.selectFileDownload, self.tela_home.tableWidget_2, self.tela_home.escolher_destino_2 , self.tela_home.caminho_2, False))
+        self.tela_home.salvar_arquivo_3.clicked.connect( partial(self.selectFileDownload, self.tela_home.tableWidget_3, self.tela_home.escolher_destino_3 , self.tela_home.caminho_3, False))
+        self.tela_home.salvar_arquivo_5.clicked.connect( partial(self.selectFileDownload, self.tela_home.tableWidget_4, self.tela_home.escolher_destino_4 , self.tela_home.caminho_5, False))
+        self.tela_home.salvar_arquivo_6.clicked.connect( partial(self.selectFileDownload, self.tela_home.tableWidget_5, self.tela_home.escolher_destino_5 , self.tela_home.caminho_6, False))
+        self.tela_home.salvar_arquivo_7.clicked.connect( partial(self.selectFileDownload, self.tela_home.tableWidget_6, self.tela_home.escolher_destino_6 , self.tela_home.caminho_7, True))
+        self.tela_home.salvar_arquivo_8.clicked.connect( partial(self.selectFileDownload, self.tela_home.tableWidget_7, self.tela_home.escolher_destino_7 , self.tela_home.caminho_8, False))
         
 
         self.tela_home.cancelar.clicked.connect(  partial(self.cancel_download ,self.tela_home.tableWidget , self.tela_home.escolher_destino))
@@ -118,6 +118,11 @@ class Main(QMainWindow, Ui_Main):
     def make_shared(self,janela,input_email, tabela):
         
         email_send = input_email.text()
+        row = tabela.currentRow()
+        col = tabela.currentColumn()
+        file = tabela.item(row, 0).text()
+        
+        print("FILE", file)
 
         if "@" in email_send:
             send = "verifica_usuario,"+email_send
@@ -128,10 +133,17 @@ class Main(QMainWindow, Ui_Main):
                 
                 id_user_destination = user[0].replace("(","")
                 id_user_origem = self.usuario.id
+                id_file = self.tela_home.ids_files[file]
 
-                print(id_user_origem , id_user_destination)
-                print(self.tela_home.ids_files)
-                
+                print(id_user_origem , id_user_destination , id_file)
+                send = "shared,"+id_user_origem+","+id_file+","+id_user_destination
+
+                if self.connection.sendDatas(send):
+                    QtWidgets.QMessageBox.about(None, "Ok!", "{} compartilhado com {}".format(file,email_send))
+                else:
+                    QtWidgets.QMessageBox.about(None, "Ooops!", "Infelizmente houve um erro no compartilhamento.")
+
+
             else:
                 QtWidgets.QMessageBox.about(None, "Ooops!", "Nenhum usuario registrado com esse email")    
         else:
@@ -154,44 +166,67 @@ class Main(QMainWindow, Ui_Main):
     def cancel_download(self,tabela,janela):
         janela.hide()
 
-    def selectFileDownload(self,tabela,janela, input_path):
+    def selectFileDownload(self,tabela,janela, input_path, is_compt):
 
         remote_file = str()
         destination = input_path.text()
 
         if os.path.exists(destination):
 
-            row = tabela.currentRow()
-            col = tabela.currentColumn()
-                            
-            file = tabela.item(row, 0).text()
-            path = tabela.item(row, 1).text()
-            
-            tabela.hide()
-            QtWidgets.QMessageBox.about(None, "Ok!", "Download do arquivo {} iniciado, aguarde ate o final.".format(file))
+            if not is_compt:
+                row = tabela.currentRow()
+                col = tabela.currentColumn()
+                                
+                file = tabela.item(row, 0).text()
+                path = tabela.item(row, 1).text()
+                
+                tabela.hide()
+                QtWidgets.QMessageBox.about(None, "Ok!", "Download do arquivo {} iniciado, aguarde ate o final.".format(file))
 
-            remote_file+=self.usuario.email+"/"+path+"/"+file
-            remote_file = remote_file.replace(" ","")
+                remote_file+=self.usuario.email+"/"+path+"/"+file
+                remote_file = remote_file.replace(" ","")
 
-            request = "download,"+remote_file
+                request = "download,"+remote_file
 
-            self.connection.request_download(request,file,destination)
+                self.connection.request_download(request,file,destination)
 
-            QtWidgets.QMessageBox.about(None, "Concluido!", "{} salvo em {}".format(file,destination))
-            tabela.show()
+                QtWidgets.QMessageBox.about(None, "Concluido!", "{} salvo em {}".format(file,destination))
+                tabela.show()
 
-            input_path.setText("")
-            janela.hide()
+                input_path.setText("")
+                janela.hide()
+            else:
+                row = tabela.currentRow()
+                col = tabela.currentColumn()
+
+                email = tabela.item(row, 1).text()
+                file =  tabela.item(row, 2).text()
+                path = tabela.item(row, 3).text()
+
+                tabela.hide()
+                QtWidgets.QMessageBox.about(None, "Ok!", "Download do arquivo {} iniciado, aguarde ate o final.".format(file))
+
+                remote_file+=email+"/"+path+"/"+file
+
+                remote_file = remote_file.replace(" ","")
+
+                request = "download,"+remote_file
+
+                self.connection.request_download(request,file,destination)
+
+                QtWidgets.QMessageBox.about(None, "Concluido!", "{} salvo em {}".format(file,destination))
+                tabela.show()
+
+                input_path.setText("")
+                janela.hide()
+   
 
         else:
 
             QtWidgets.QMessageBox.about(None, "Erro!", "O destino informado [{}] nao existe".format(destination))
             input_path.setText("")
 
-
-
             
-
 
     def selectFile(self):
         filename = QFileDialog.getOpenFileName()
@@ -270,7 +305,16 @@ class Main(QMainWindow, Ui_Main):
         videos = self.connection.request_files(self.usuario.id,"videos")
         musicas = self.connection.request_files(self.usuario.id,"musicas")
         outros = self.connection.request_files(self.usuario.id,"outros")
-        compart = self.connection.request_files(self.usuario.id,"compartilhados")
+        compart = self.connection.request_comp(self.usuario.id)
+
+
+        lista_compart = []
+
+        for i in compart:
+            lista_compart.append(i.split(","))
+
+        lista_compart.pop(0)
+        
 
    
         self.tela_home.loadData(recentes,self.tela_home.tableWidget)
@@ -278,7 +322,7 @@ class Main(QMainWindow, Ui_Main):
         self.tela_home.loadData(imagens,self.tela_home.tableWidget_3)
         self.tela_home.loadData(videos,self.tela_home.tableWidget_4)
         self.tela_home.loadData(musicas,self.tela_home.tableWidget_5)
-        self.tela_home.loadData(compart,self.tela_home.tableWidget_6)
+        self.tela_home.loadDataCompart(lista_compart,self.tela_home.tableWidget_6)
         self.tela_home.loadData(outros,self.tela_home.tableWidget_7)
 
     def homePageUser(self):

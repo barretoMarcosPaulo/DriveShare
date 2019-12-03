@@ -60,7 +60,8 @@ class ClientSide():
 
 
 		self.client_socket.send(path.encode())
-		destination ="/"+name
+		destination +="/"+name
+		print("destination", destination)
 
 		f = open(destination,'wb')
 
@@ -119,8 +120,18 @@ class ClientSide():
 			nova_lista[x].pop(0)
 
 
-		return nova_lista	
+		return nova_lista
 
+	def request_comp(self, user_id):
+		send = "files_comp,"+user_id
+
+		self.client_socket.send(send.encode())
+		files = self.client_socket.recv(1024).decode()
+
+		lista = files.split(";")
+		
+		return lista	
+	
 
 	def closeConnection(self):
 		self.client_socket.close()

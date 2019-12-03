@@ -67,7 +67,6 @@ class Login_Ui_Dialog(object):
         self.label.setText(_translate("Dialog", "DriveShare"))
         self.label_2.setText(_translate("Dialog", "Acesse sua conta"))
         self.loginRegisterButton.setText(_translate("Dialog", "Cadastre -se"))
-        self.label_4.setText(_translate("Dialog", "Esqueci minha senha"))
         self.loginButton.setText(_translate("Dialog", "Entrar"))
         self.label_3.setText(_translate("Dialog", "<html><head/><body><p><img src=\"logoShare.png\"/></p></body></html>"))
 
