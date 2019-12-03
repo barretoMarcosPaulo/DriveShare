@@ -10,7 +10,7 @@ A plataforma implementada destina-se a realização de uploads de arquivos para 
 
 3 - Instale a biblioteca pyqt5 no cliente;
 
-4 - Instale a biblioteca pymysql no servidor e crie o banco de dados segundo o arquivo database.sql em https://github.com/barretoMarcosPaulo/server-DriveShare/database.sql;
+4 - Instale a biblioteca pymysql no servidor e crie o banco de dados segundo o arquivo database.sql em https://github.com/barretoMarcosPaulo/server-DriveShare/blob/master/database.sql;
 
 5 - Execute o arquivo <strong>server.py</strong> para executar o servidor;
 
